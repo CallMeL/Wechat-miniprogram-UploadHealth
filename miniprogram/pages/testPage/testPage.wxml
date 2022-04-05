@@ -1,2 +1,8 @@
-<!--miniprogram/pages/testPage/testPage.wxml-->
-<text>miniprogram/pages/testPage/testPage.wxml</text>
+<!--pages/testPage/testPage.wxml-->
+<input placeholder="input name" bindinput="addName"></input>
+<input placeholder="input age" bindinput="addAge"></input>
+
+<button bindtap="addData" type="primary">add Data</button>
+<button bindtap="getData" type="primary">get Data</button>
+
+<button bindtap="delData" type="primary">del Data</button>
