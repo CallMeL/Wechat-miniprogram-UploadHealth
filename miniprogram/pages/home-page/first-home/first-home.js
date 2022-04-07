@@ -1,37 +1,6 @@
-// miniprogram/pages/testPage/testPage.js
-const DB = wx.cloud.database().collection("test-cloud")
-let myname = ""
-let myage = ""
+// pages/home-page/first-home/first-home.js
 Page({
-  
-  addData(){
-    DB.add({
-      data:{
-        name:myname,
-        age:myage
-      },
-      success(res){
-        console.log("success",res)
-      },
-      fail(res){
-        console.log("fail",res)
-      }
-    })
 
-  },
-  getData(){
-    DB.get({
-      success(res){
-        console.log("success",res)
-      }
-    })
-  },
-  addName(event){
-    myname = event.detail.value
-  },
-  addAge(event){
-    myage = event.detail.value
-  },
   /**
    * 页面的初始数据
    */

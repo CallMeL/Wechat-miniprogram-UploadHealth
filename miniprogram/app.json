@@ -1,6 +1,12 @@
 {
   "pages": [
-    "pages/testPage/testPage"
+    "pages/intro-pages/test-login/test-login",
+    "pages/intro-pages/welcome-page/welcome-page",
+    "pages/testPage/testPage",
+    "pages/intro-pages/logs/logs",
+    "pages/home-page/first-home/first-home",
+    "pages/home-page/today-score/today-score",
+    "pages/user-pages/user-page"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -6,3 +6,4 @@
 <button bindtap="getData" type="primary">get Data</button>
 
 <button bindtap="delData" type="primary">del Data</button>
+

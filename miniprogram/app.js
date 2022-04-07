@@ -16,5 +16,10 @@ App({
     }
 
     this.globalData = {};
+  },
+
+  globalData: {
+    userInfo: null
   }
+
 });
