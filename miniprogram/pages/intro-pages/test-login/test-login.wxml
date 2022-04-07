@@ -1,0 +1,5 @@
+<!--pages/intro-pages/test-login/test-login.wxml-->
+<view class="container">
+ <button type = "primary" bindtap = "loadByWechat">微信登录</button>
+</view>
+
