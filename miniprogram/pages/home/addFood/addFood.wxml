@@ -1,0 +1,4 @@
+<!--pages/home/addFood/addFood.wxml-->
+
+<button bind:tap="onCreateFood">添加食物</button>
+<m-modal title="食物信息：" wx:if="{{isCreating}}" bind:cancel="onCancelCreate" bind:confirm="onAddFood"/>

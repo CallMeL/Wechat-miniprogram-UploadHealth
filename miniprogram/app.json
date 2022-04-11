@@ -1,21 +1,19 @@
 {
   "pages": [
-    "pages/intro-pages/test-login/test-login",
-    "pages/intro-pages/welcome-page/welcome-page",
-    "pages/testPage/testPage",
-    "pages/intro-pages/logs/logs",
-    "pages/home-page/first-home/first-home",
-    "pages/home-page/today-score/today-score",
-    "pages/user-pages/user-page"
+    "pages/home/index",
+    "pages/home/addFood/addFood",
+    
+    "pages/test/test",
+    "pages/detail/index",
+    "pages/timer/index",
+    "pages/summary/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Chronus",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2",
-  "lazyCodeLoading": "requiredComponents"
+  "sitemapLocation": "sitemap.json"
 }

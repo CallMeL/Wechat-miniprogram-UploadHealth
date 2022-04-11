@@ -1,0 +1,1 @@
+export const CLOUD_ENV_ID = 'cloud1-6gaunktybd5c7902'  // 云开发环境ID

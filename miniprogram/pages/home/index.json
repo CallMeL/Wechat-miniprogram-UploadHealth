@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../libs/ec-canvas/ec-canvas",
+    "m-tag": "../../components/tag/index",
+    "m-loading": "../../components/loading/index",
+    "m-tips": "../../components/tips/index",
+    "m-modal": "../../components/modal/index"
+  }
+}

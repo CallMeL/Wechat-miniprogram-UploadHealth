@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "miniprogram/",
-  "cloudfunctionRoot": "cloud/",
+  "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -40,8 +40,10 @@
     "ignoreUploadUnusedFiles": true
   },
   "appid": "wxef9607207847cf77",
-  "projectname": "UploadHealth",
-  "libVersion": "2.20.1",
+  "projectname": "chronus-master",
+  "libVersion": "2.8.3",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
@@ -59,9 +61,25 @@
     "miniprogram": {
       "list": [
         {
+          "id": 0,
+          "name": "detail",
+          "pathName": "pages/detail/index",
+          "query": "id=XIzKrcDR1TiN7x3C",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "timer",
+          "pathName": "pages/timer/index",
+          "query": "title=HelloWorld",
+          "scene": null
+        },
+        {
           "id": -1,
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide"
+          "name": "summary",
+          "pathName": "pages/summary/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

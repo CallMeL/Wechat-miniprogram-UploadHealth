@@ -1,25 +1,75 @@
-// app.js
+import TimerState from './config/timerState'
+import { CLOUD_ENV_ID } from './config'
+
 App({
-  onLaunch: function () {
+  onLaunch() {
     if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力');
+      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
       wx.cloud.init({
-        env :"cloud1-6gaunktybd5c7902",
-        // env 参数说明：
-        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
-        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
-        //   如不填则使用默认环境（第一个创建的环境）
-        // env: 'my-env-id',
         traceUser: true,
-      });
+        env: CLOUD_ENV_ID
+      })
     }
 
-    this.globalData = {};
+    this.data = {
+      timerId: -1,
+      timerState: TimerState.NONE,
+      goalId: '',
+      goalTitle: '',
+      duration: 0,
+      beginDate: 0,
+      pauseDate: 0,
+      pauseDuration: 0
+    }
   },
 
-  globalData: {
-    userInfo: null
-  }
+  startTimer(goalId, goalTitle, onCount) {
+    const { data } = this
+    const { timerState, timerId } = data
 
-});
+    if (timerState === TimerState.NONE) {
+      data.goalId = goalId
+      data.goalTitle = goalTitle
+      data.beginDate = Date.now()
+    } else if (timerState === TimerState.PAUSE) {
+      data.pauseDuration = data.pauseDuration + (Date.now() - data.pauseDate)
+      data.pauseDate = 0
+    }
+
+    data.timerState = TimerState.ONGOING
+
+    if (timerId !== -1) {
+      clearInterval(timerId)
+    }
+
+    const { beginDate, pauseDuration } = data
+
+    data.duration = Date.now() - beginDate - pauseDuration
+    onCount(data.duration)
+    const newTimerId = setInterval(() => {
+      data.duration = Date.now() - beginDate - pauseDuration
+      onCount(data.duration)
+    }, 1000)
+    this.data.timerId = newTimerId
+  },
+
+  pauseTimer() {
+    this.data.pauseDate = Date.now()
+    clearInterval(this.data.timerId)
+    this.data.timerId = -1
+    this.data.timerState = TimerState.PAUSE
+  },
+
+  stopTimer() {
+    clearInterval(this.data.timerId)
+    this.data.timerId = -1
+    this.data.timerState = TimerState.NONE
+    this.data.goalId = ''
+    this.data.goalTitle = ''
+    this.data.duration = 0
+    this.data.pauseDuration = 0
+    this.data.beginDate = 0
+    this.data.pauseDate = 0
+  }
+})

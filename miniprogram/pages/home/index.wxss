@@ -1,0 +1,204 @@
+.blur-bg {
+  filter: blur(10rpx);
+  overflow: hidden;
+  animation: ani-blur 1000ms;
+}
+
+/* 用户信息显示 */
+.user-info-container {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 40rpx;
+  margin-top: 32rpx;
+}
+
+.user-info-container .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border: 5rpx solid white;
+  border-radius: 50%;
+  box-shadow: 0 6rpx 16rpx rgba(25, 118, 210, 0.1);
+}
+
+.info {
+  margin-left: 24rpx;
+  color: black;
+  font-weight: bold;
+  font-size: 36rpx;
+}
+
+.info > .name {
+  color: #1976d2;
+  font-weight: bold;
+  font-size: inherit;
+}
+
+.info > .statistics {
+  color: black;
+  font-size: 32rpx;
+}
+
+.authorize {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 12rpx 48rpx;
+  border-radius: 36rpx;
+  background-color: #ffee58;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 26rpx;
+  line-height: 28rpx;
+}
+
+/* 空视图 */
+.pie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.empty-img {
+  position: absolute;
+  width: 50%;
+}
+
+/* 饼状图 */
+.pie-container,
+.pie {
+  width: 100%;
+  height: 500rpx;
+}
+
+/* 目标列表 */
+.project-container {
+  margin: 0 40rpx;
+  margin-top: 10rpx;
+  margin-bottom: 200rpx;
+}
+
+.project-container > .count {
+  color: #555;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.project-container > .count > .num {
+  display: inline-block;
+  margin: 0 4rpx;
+  color: #1976d2;
+  font-weight: bolder;
+  font-size: 32rpx;
+}
+
+.project {
+  margin: 24rpx 0;
+  padding: 24rpx;
+  border-radius: 18rpx;
+  background-color: #fff;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
+}
+
+.project > .title {
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+.project > .tags {
+  display: flex;
+  margin-top: 6rpx;
+}
+
+.project > .tags > m-tag {
+  margin-left: 16rpx;
+}
+
+.project > .tags > m-tag:first-child {
+  margin-left: 0;
+}
+
+/* 当前记录提示 */
+.timer-tips {
+  margin: 0 40rpx;
+  background-color: #fdd835;
+  font-size: 28rpx;
+  border-radius: 18rpx;
+  padding: 20rpx 24rpx;
+  color: #555;
+  animation: tip-ani 2s infinite ease-in-out;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
+}
+
+.timer-tips > .timer-detail {
+  display: flex;
+  align-items: center;
+}
+
+.timer-tips .timer {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1565c0;
+  margin-top: 6rpx;
+  letter-spacing: 2rpx;
+}
+
+.timer-tips > .timer-detail > .timer-goal-title {
+  display: inline-block;
+  font-weight: bold;
+  color: #000;
+  margin: 0 8rpx;
+}
+
+.timer-tips > .timer-detail > .check-timer {
+  margin-left: auto;
+  background-color: #fff;
+  color: #1976d2;
+  padding: 5rpx 16rpx;
+  font-weight: bold;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  flex-shrink: 0;
+}
+
+@keyframes tip-ani {
+  0% {
+    background-color: #fdd835;
+  }
+  70% {
+    background-color: #fbc02d;
+  }
+  100% {
+    background-color: #fdd835;
+  }
+}
+
+@keyframes ani-blur {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* 创建按钮 */
+.create {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  margin: 32px;
+  padding: 24rpx;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #1565c0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3rpx 20rpx;
+}
+
+/* 加载 */
+.loading {
+  margin-top: 100rpx;
+}
