@@ -52,7 +52,8 @@
 <image class="create" src="../../images/home/create.png" bind:tap="onCreateGoal" />
 </view>
 -->
-<image class="create" src="../../images/home/create.png" bind:tap="JumpToAddFoodPage" />
+<image class="create" src="../../images/home/create-btn.png" bind:tap="JumpToAddFoodPage" />
 </view>
+
 <!-- 食物表单 -->
 <m-modal title="食物信息：" wx:if="{{isCreating}}" bind:cancel="onCancelCreate" bind:confirm="onAddGoal"/>

@@ -1,0 +1,17 @@
+<!--custom-tab-bar/index.wxml-->
+<!-- 自定义tab -->
+<view class="tab-bar">
+  <view wx:for="{{list}}" wx:key="index" class="top_view" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab" >
+    <view>
+      <image class="img_" src="{{selected === index ?item.selectedIconPath : item.iconPath}}"></image>
+  
+    </view>
+ <!--
+       <view style="color: {{selected === index ?selectedColor : color}}">
+        {{item.text}}
+    </view>
+ -->   
+
+  </view>
+</view>
+

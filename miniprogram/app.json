@@ -2,11 +2,12 @@
   "pages": [
     "pages/home/index",
     "pages/home/addFood/addFood",
-    
     "pages/test/test",
     "pages/detail/index",
     "pages/timer/index",
-    "pages/summary/index"
+    "pages/summary/index",
+    "pages/user/index",
+    "custom-tab-bar/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -14,6 +15,22 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Chronus",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [{
+      "pagePath": "pages/home/index",
+      "text": "主页"
+    }, {
+      "pagePath": "pages/detail/index",
+      "text": "日历"
+    }, {
+      "pagePath": "pages/user/index",
+      "text": "我的"
+    }]
   },
   "sitemapLocation": "sitemap.json"
 }

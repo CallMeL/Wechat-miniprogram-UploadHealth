@@ -188,14 +188,13 @@
   position: fixed;
   right: 0;
   bottom: 0;
-  box-sizing: border-box;
-  margin: 32px;
+  box-sizing: content-box;
+  margin: 5%;
+  margin-bottom: 25%;
   padding: 24rpx;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background-color: #1565c0;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 3rpx 20rpx;
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 /* 加载 */
