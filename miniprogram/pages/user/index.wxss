@@ -1,1 +1,66 @@
 /* pages/user/index.wxss */
+.btn-list{
+  align-content: center;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  
+}
+.edit-button-1{
+position: absolute;
+width: 90%;
+height: 15%;
+border-radius: 10px;
+background-color: #a9c1e0;
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.btn-note{
+  color: #1d1e1f;
+  font-weight: bold;
+  font-size: inherit;
+}
+.user-info-container {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 40rpx;
+  margin-top: 32rpx;
+}
+
+.user-info-container .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border: 5rpx solid white;
+  border-radius: 50%;
+  box-shadow: 0 6rpx 16rpx rgba(25, 118, 210, 0.1);
+}
+
+.info {
+  margin-left: 24rpx;
+  color: black;
+  font-weight: bold;
+  font-size: 36rpx;
+}
+
+.info > .name {
+  color: #1976d2;
+  font-weight: bold;
+  font-size: inherit;
+}
+
+.info > .statistics {
+  color: black;
+  font-size: 32rpx;
+}
+
+.authorize {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 12rpx 48rpx;
+  border-radius: 36rpx;
+  background-color: #ffee58;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 26rpx;
+  line-height: 28rpx;
+}

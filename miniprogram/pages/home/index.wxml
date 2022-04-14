@@ -1,6 +1,6 @@
 <view class="{{isCreating ? 'blur-bg' : ''}}">
 <!-- 用户信息 -->
-<view class='user-info-container'>
+<view class='user-info-container' wx:if="{{!hasCreateUser}}">
   <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFit'></image>
   <view class='info'>
     <view class='name' wx:if="{{userInfo}}">{{userInfo.nickName}}，</view>
@@ -10,6 +10,7 @@
     <view class="statistics">你的总累计时间为 {{wholeTime}}</view>
   </view>
 </view>
+
 <!-- 饼状图 -->
 <view class="pie-container">
   <image class="empty-img" wx:if="{{goalList.length === 0 || !goalList}}" mode="aspectFit" src="../../images/home/empty.png" bind:tap="onCreateGoal" />

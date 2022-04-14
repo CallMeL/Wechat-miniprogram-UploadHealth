@@ -1,0 +1,14 @@
+/* pages/user/editInform/editInform.wxss */
+title {
+  color: #333;
+  font-weight: bold;
+  font-size: 40rpx;
+  margin-bottom: 36rpx;
+  
+}
+.input-line{
+  align-items: left;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-top: 5%;
+}

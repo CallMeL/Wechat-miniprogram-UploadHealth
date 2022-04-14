@@ -1,66 +1,97 @@
 // pages/user/index.js
+import HomeModel from '../../models/home'
+const globalEnv = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: null,
+  },
+  onLoad() {
+    this.initUserInfo()
+  },
+  onShow() {
+    // 若初始化id失败则在catch中初始化userId，否则直接获取列表
+    this.initOpenIdAndUserId()
+      .then()
+      .catch(err => {
+        if (err === 0) {
+          return this.initUserId()        
+        }
+      })
   },
 
+  initUserInfo() {
+    HomeModel.getUserInfo().then(
+      res => {
+        this.setData({
+          userInfo: res.userInfo
+        })
+      },
+      err => {
+        showToast('请先授权登录')
+        console.log(err)
+      }
+    )
+  },
   /**
-   * 生命周期函数--监听页面加载
+   * 点击授权按钮获取信息
    */
-  onLoad: function (options) {
-
+  onAuthorize(e) {
+    if (e.detail.userInfo) {
+      this.setData({
+        userInfo: e.detail.userInfo
+      })
+    }
+  },
+  initOpenIdAndUserId() {
+    return new Promise((resolve, reject) => {
+      HomeModel.getOpenIdAndUserId().then(
+        res => {
+          const idData = res.result
+          globalEnv.data.openid = idData.openId
+          if (idData.userId) {
+            globalEnv.data.userId = idData.userId
+            resolve()
+          } else {
+            reject(0)
+          }
+        },
+        err => {
+          if (err.errCode === -1) {
+            showToast('网络不佳，登录失败')
+          } else {
+            showToast(`登录失败，错误码：${err.errCode}`)
+          }
+          reject(-1)
+        }
+      )
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  initUserId() {
+    return new Promise((resolve, reject) => {
+      HomeModel.addUserId().then(
+        res => {
+          globalEnv.data.userId = res._id
+          resolve()
+        },
+        err => {
+          showToast(`添加用户id失败，错误码：${err.errCode}`)
+          reject()
+        }
+      )
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  jumptoEditInform(){
+    if (!this.data.userInfo) {
+      showToast('请先授权登录')
+      return
+    }
+    wx.navigateTo({
+      url: '../user/editInform/editInform'
+    })
   }
 })

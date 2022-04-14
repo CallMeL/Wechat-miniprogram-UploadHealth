@@ -11,6 +11,7 @@ let pie = null
 Page({
   data: {
     pieOpt: {},
+    hasCreateUser:false,
     userInfo: null,
     goalList: null,
     wholeTime: '',
@@ -22,21 +23,20 @@ Page({
     timer: '00:00:00',
     timerState: null
   },
-
   onLoad() {
     this.initUserInfo()
   },
-
   onShow() {
     // 若初始化id失败则在catch中初始化userId，否则直接获取列表
     this.initOpenIdAndUserId()
       .then()
       .catch(err => {
         if (err === 0) {
-          return this.initUserId()
+          this.data.hasCreateUser = true
+          return this.initUserId()        
         }
       })
-      .then(() => {
+      .then(() => { 
         this.getGoalList()
       })
 
@@ -80,9 +80,7 @@ Page({
       isCreating: false
     })
   },
-  onAddFood(e){
-    const getFoodname = e.detail.name
-  },
+
   JumpToAddFoodPage(){
     if (!this.data.userInfo) {
       showToast('请先授权登录')
@@ -93,104 +91,12 @@ Page({
     })
   },
 
-
-
-
-  /**
-   * not original
-   */
-  onCreateGoal() {
-    if (!this.data.userInfo) {
-      showToast('请先授权登录')
-      return
-    }
-    this.setData({
-      isCreating: true
-    })
-  },
-
-  onAddGoal(e) {
-    const goalTitle = e.detail
-    if (!goalTitle.length) {
-      showToast('标题不能为空')
-      return
-    }
-
-    if (this.data.isUploading) {
-      return
-    }
-
-    this.data.isUploading = true
-    HomeModel.addGoal(globalEnv.data.userId, goalTitle).then(
-      res => {
-        this.setData({
-          isCreating: false
-        })
-        this.data.isUploading = false
-        showToast('创建成功', true)
-        this.getGoalList()
-      },
-      err => {
-        this.setData({
-          isCreating: false,
-          isUploading: false
-        })
-        showToast('创建失败')
-      }
-    )
-  },
-  onGoalClick(e) {
-    const { goalId } = e.currentTarget.dataset
-
-    wx.navigateTo({
-      url: `/pages/detail/index?id=${goalId}`
-    })
-  },
-
-  onJumpToTimerPage() {
-    wx.navigateTo({
-      url: '/pages/timer/index'
-    })
-  },
-
-  setTimerTips() {
-    const timerInfo = globalEnv.data
-    let stateDesc = ''
-
-    switch (timerInfo.timerState) {
-      case TimerState.NONE:
-        stateDesc = ''
-        break
-      case TimerState.PAUSE:
-        stateDesc = '暂停中'
-        this.setData({
-          timer: formatDurationToTimer(timerInfo.duration),
-          timerGoalId: timerInfo.goalId
-        })
-        break
-      case TimerState.ONGOING:
-        stateDesc = '进行中'
-        this.setData({
-          timer: formatDurationToTimer(timerInfo.duration)
-        })
-        globalEnv.startTimer(null, null, duration => {
-          this.setData({
-            timer: formatDurationToTimer(duration),
-            timerGoalId: timerInfo.goalId
-          })
-        })
-    }
-    this.setData({
-      timerState: stateDesc,
-      timerGoalTitle: timerInfo.goalTitle
-    })
-  },
-
   initUserInfo() {
     HomeModel.getUserInfo().then(
       res => {
         this.setData({
-          userInfo: res.userInfo
+          userInfo: res.userInfo,
+          hasCreateUser:true
         })
       },
       err => {
@@ -239,6 +145,97 @@ Page({
       )
     })
   },
+  /**
+   * not original
+  onCreateGoal() {
+    if (!this.data.userInfo) {
+      showToast('请先授权登录')
+      return
+    }
+    this.setData({
+      isCreating: true
+    })
+  },
+
+  onAddGoal(e) {
+    const goalTitle = e.detail
+    if (!goalTitle.length) {
+      showToast('标题不能为空')
+      return
+    }
+
+    if (this.data.isUploading) {
+      return
+    }
+
+    this.data.isUploading = true
+    HomeModel.addGoal(globalEnv.data.userId, goalTitle).then(
+      res => {
+        this.setData({
+          isCreating: false
+        })
+        this.data.isUploading = false
+        showToast('创建成功', true)
+        this.getGoalList()
+      },
+      err => {
+        this.setData({
+          isCreating: false,
+          isUploading: false
+        })
+        showToast('创建失败')
+      }
+    )
+  },
+   */
+
+  onGoalClick(e) {
+    const { goalId } = e.currentTarget.dataset
+
+    wx.navigateTo({
+      url: `/pages/detail/index?id=${goalId}`
+    })
+  },
+
+  onJumpToTimerPage() {
+    wx.navigateTo({
+      url: '/pages/timer/index'
+    })
+  },
+
+  setTimerTips() {
+    const timerInfo = globalEnv.data
+    let stateDesc = ''
+
+    switch (timerInfo.timerState) {
+      case TimerState.NONE:
+        stateDesc = ''
+        break
+      case TimerState.PAUSE:
+        stateDesc = '暂停中'
+        this.setData({
+          timer: formatDurationToTimer(timerInfo.duration),
+          timerGoalId: timerInfo.goalId
+        })
+        break
+      case TimerState.ONGOING:
+        stateDesc = '进行中'
+        this.setData({
+          timer: formatDurationToTimer(timerInfo.duration)
+        })
+        globalEnv.startTimer(null, null, duration => {
+          this.setData({
+            timer: formatDurationToTimer(duration),
+            timerGoalId: timerInfo.goalId
+          })
+        })
+    }
+    this.setData({
+      timerState: stateDesc,
+      timerGoalTitle: timerInfo.goalTitle
+    })
+  },
+
 
   getGoalList() {
     HomeModel.getGoalList(globalEnv.data.userId).then(

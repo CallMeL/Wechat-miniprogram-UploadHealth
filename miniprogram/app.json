@@ -1,12 +1,14 @@
 {
   "pages": [
+    "pages/user/index",
+    "pages/user/editInform/editInform",
+    
     "pages/home/index",
     "pages/home/addFood/addFood",
     "pages/test/test",
     "pages/detail/index",
     "pages/timer/index",
     "pages/summary/index",
-    "pages/user/index",
     "custom-tab-bar/index",
     "pages/calendar/index"
   ],

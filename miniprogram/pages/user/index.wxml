@@ -1,2 +1,24 @@
 <!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view class="page-container">
+<!--user icon-->
+  <view class='user-info-container'>
+  <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFit'></image>
+  <view class='info'>
+    <view class='name' wx:if="{{userInfo}}">{{userInfo.nickName}}，</view>
+    <button class="authorize" open-type="getUserInfo" bindgetuserinfo="onAuthorize" wx:else>
+      授权登录
+    </button>
+    <view class="statistics">你的总记录餐数 {{wholeTime}}</view>
+  </view>
+</view>
+<!--edit list-->
+<view class="btn-list">
+  <button class="edit-button-1" bindtap="jumptoEditInform">
+  <view class="btn-note">个人信息修改</view>
+  </button>
+</view>
+
+
+</view>
+
+

@@ -1,0 +1,5 @@
+<view class="input-line">
+        <view wx:for="{{Details}}" wx:key="index">
+            {{index}}：{{item}}
+        </view>
+</view>
