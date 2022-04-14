@@ -1,13 +1,13 @@
 /* pages/user/index.wxss */
 .btn-list{
-  align-content: center;
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
-  
+ 
 }
 .edit-button-1{
-position: absolute;
+margin-bottom: 10%;
+position: flex;
 width: 90%;
 height: 15%;
 border-radius: 10px;

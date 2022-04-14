@@ -4,7 +4,7 @@
     "pages/user/editInform/editInform",
     
     "pages/home/index",
-    "pages/home/addFood/addFood",
+    "pages/user/addFood/addFood",
     "pages/test/test",
     "pages/detail/index",
     "pages/timer/index",
