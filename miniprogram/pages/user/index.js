@@ -2,18 +2,14 @@
 import HomeModel from '../../models/home'
 const globalEnv = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     userInfo: null,
+    Details:null,
   },
   onLoad() {
     this.initUserInfo()
   },
   onShow() {
-    // 若初始化id失败则在catch中初始化userId，否则直接获取列表
     this.initOpenIdAndUserId()
       .then()
       .catch(err => {
@@ -22,7 +18,6 @@ Page({
         }
       })
   },
-
   initUserInfo() {
     HomeModel.getUserInfo().then(
       res => {
@@ -36,9 +31,6 @@ Page({
       }
     )
   },
-  /**
-   * 点击授权按钮获取信息
-   */
   onAuthorize(e) {
     if (e.detail.userInfo) {
       this.setData({

@@ -1,5 +1,9 @@
-<view class="input-line">
-        <view wx:for="{{Details}}" wx:key="index">
-            {{index}}：{{item}}
-        </view>
-</view>
+<input class="input-line" placeholder="{{activity}}" bindinput="editActivity"/>
+<input class="input-line" placeholder="{{email}}" bindinput="editEmail"/>
+<input class="input-line" placeholder="{{age}}" bindinput="editAge"/>
+<input class="input-line" placeholder="{{gender}}" bindinput="editGender"/>
+<input class="input-line" placeholder="{{weight}}" bindinput="editWeitgh"/>
+<input class="input-line" placeholder="{{height}}" bindinput="editHeight"/>
+
+<button bind:tap="onConfirm">确定</button>
+<button bind:tap="onCancel">取消</button>

@@ -7,14 +7,14 @@ const db = cloud.database()
 
 exports.main = async (event, context) => {
   const userId = event.userId
-  const nickname = event.nickname
-  const age = event.age
-  const gender = event.gender
-  const height = event.height
-  const weight = event.weight
-  const activity = event.activity
-  const email = event.email
-  userInform = {nickname,gender,email}
+  const newemail = event.email
+  const newage = event.age
+  const newgender = event.gender
+  const newheight = event.height
+  const newweight = event.weight
+  const newactivity = event.activity
+  
+  console.log(event)
   if(!userId) return
   //if (!goalId || !goalTitle) return
   try {
@@ -22,14 +22,13 @@ exports.main = async (event, context) => {
       '_id':userId,
     }).update({
       data:{
-        'Details':db.command.set({
-          nickname:nickname,
-          age:age,
-          email:email,
-          gender:gender,
-          height:height,
-          weight:weight,
-          activity:activity
+        'details':db.command.set({
+          email:newemail,
+          activity:newactivity,
+          age:newage,
+          gender:newgender,
+          height:newheight,
+          weight:newweight
         }),
       }
     })

@@ -8,7 +8,7 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   
   const wxContext = cloud.getWXContext()
-  const details = {
+  const thedetails = {
     activity:1700,
     age:20,
     email:'0@example',
@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
     return await db.collection('users').add({
       data: {
         _openid: wxContext.OPENID,
-        details:details
+        details: thedetails
       }
     })
   } catch (e) {
