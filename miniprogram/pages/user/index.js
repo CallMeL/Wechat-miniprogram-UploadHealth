@@ -94,5 +94,14 @@ Page({
     wx.navigateTo({
       url: '../user/addFood/addFood'
     })
+  },
+  jumptoMyAddFood(){
+    if (!this.data.userInfo) {
+      showToast('请先授权登录')
+      return
+    }
+    wx.navigateTo({
+      url: '../user/myAddFood/myAddFood'
+    })
   }
 })

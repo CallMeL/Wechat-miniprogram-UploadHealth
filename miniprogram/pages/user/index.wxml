@@ -21,7 +21,7 @@
   <view class="btn-note">添加我的食物</view>
   </button>  
 
-  <button class="edit-button-1" bindtap="jumptoAddMyFood">
+  <button class="edit-button-1" bindtap="jumptoMyAddFood">
   <view class="btn-note">我添加过的食物</view>
   </button>  
 </view>

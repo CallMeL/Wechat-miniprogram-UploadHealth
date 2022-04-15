@@ -1,0 +1,45 @@
+.project-container {
+  margin: 0 40rpx;
+  margin-top: 10rpx;
+  margin-bottom: 200rpx;
+}
+
+.project-container > .count {
+  color: #555;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.project-container > .count > .num {
+  display: inline-block;
+  margin: 0 4rpx;
+  color: #1976d2;
+  font-weight: bolder;
+  font-size: 32rpx;
+}
+
+.project {
+  margin: 24rpx 0;
+  padding: 24rpx;
+  border-radius: 18rpx;
+  background-color: #fff;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
+}
+
+.project > .title {
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+.project > .tags {
+  display: flex;
+  margin-top: 6rpx;
+}
+
+.project > .tags > m-tag {
+  margin-left: 16rpx;
+}
+
+.project > .tags > m-tag:first-child {
+  margin-left: 0;
+}

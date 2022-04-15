@@ -1,0 +1,9 @@
+<!--pages/user/myAddFood/myAddFood.wxml-->
+<view class="project-container" wx:if="{{foodList.length}}">
+
+  <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onFoodClick" data-goal-id="{{item._id}}">
+      <view class="title">{{item.foodname}}</view>
+</view>
+
+</view>
+

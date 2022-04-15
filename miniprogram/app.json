@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/user/index",
-    "pages/user/editInform/editInform",
+    "pages/user/myAddFood/myAddFood",
     
+    "pages/user/editInform/editInform",
     "pages/home/index",
     "pages/user/addFood/addFood",
     "pages/test/test",
