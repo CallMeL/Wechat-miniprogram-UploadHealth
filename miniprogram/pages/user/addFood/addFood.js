@@ -10,15 +10,30 @@ Page({
 
   data: {
     foodName:"",
+    foodImage:" ",
     list: [{
         inputData: '',
-        name: '蛋白质',
-        union: '100g',
+        name: '热量',
+        unit: '大卡',
       }, {
         inputData: '',
         name: '脂肪',
-        union: '50g',
-      }],
+        unit: '克',
+      }, {
+        inputData: '',
+        name: '碳水化合物',
+        unit: '克',
+      }, {
+        inputData: '',
+        name: '蛋白质',
+        unit: '克',
+      }, {
+        inputData: '',
+        name: '热量',
+        unit: '大卡',
+      }, 
+    
+    ],
       inputValue: '',
       focusId: '',
       isCreating: false,

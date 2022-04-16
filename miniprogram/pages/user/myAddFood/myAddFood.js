@@ -10,6 +10,7 @@ onLoad:function(){
   this.setData({
     userId: globalEnv.data.userId
   }) 
+  console.log(this.data.userId)
 },
   onShow: function () {
     this.getFoodList()
@@ -25,7 +26,7 @@ getFoodList(){
       this.setData({
         foodList: res.result.data
       })
-      console.log(this.data.foodList)
+      console.log(res.result.data)
     })
   
 },
