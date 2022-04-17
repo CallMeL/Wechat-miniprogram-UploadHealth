@@ -6,27 +6,28 @@ Page({
     userId:null,
     foodList:null,
   },
-onLoad:function(){
-  this.setData({
-    userId: globalEnv.data.userId
-  }) 
-  console.log(this.data.userId)
-},
-  onShow: function () {
+onLoad: function(options) {
+    this.data.userId = options.id
+    console.log(this.data.userId)
     this.getFoodList()
-  },
+},
+
+onShow: function () {
+    this.getFoodList()
+},
 
 getFoodList(){
   wx.cloud.callFunction({
     name: 'getCustomFoodList',
     data: {
-      userId:this.data.userId
+      ID:this.data.userId
     }
   }).then(res => {
       this.setData({
         foodList: res.result.data
       })
-      console.log(res.result.data)
+      console.log(res.result)
+      
     })
   
 },

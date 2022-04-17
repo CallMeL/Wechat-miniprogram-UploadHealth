@@ -5,7 +5,9 @@ cloud.init({
 })
 const db = cloud.database()
 const _ = db.command
+var today = new Date().toLocaleDateString()
 
+console.log(time)
 exports.main = async (event, context) => {
   const { ID } = event
   if (!ID) {
@@ -15,9 +17,10 @@ exports.main = async (event, context) => {
   try {
     console.log('in cloud'+ID)
     return await db
-      .collection('foods')
+      .collection('food-records')
       .where({
-        userId:ID
+        userId:ID,
+        addDate:_.and(_.gte(new Date(today+" 00:00:00")),_.lte(new Date(today+" 23:59:59")))
       })
       .get()
   } catch (e) {

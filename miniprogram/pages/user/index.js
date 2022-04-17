@@ -1,8 +1,10 @@
 // pages/user/index.js
+//import { userInfo } from 'os'
 import HomeModel from '../../models/home'
 const globalEnv = getApp()
 Page({
   data: {
+    userId:null,
     userInfo: null,
     Details:null,
   },
@@ -17,6 +19,7 @@ Page({
           return this.initUserId()        
         }
       })
+    
   },
   initUserInfo() {
     HomeModel.getUserInfo().then(
@@ -24,6 +27,7 @@ Page({
         this.setData({
           userInfo: res.userInfo
         })
+        console.log(res.userInfo)
       },
       err => {
         showToast('请先授权登录')
@@ -46,6 +50,9 @@ Page({
           globalEnv.data.openid = idData.openId
           if (idData.userId) {
             globalEnv.data.userId = idData.userId
+            this.setData({
+              userId:globalEnv.data.userId
+            })
             resolve()
           } else {
             reject(0)
@@ -83,7 +90,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: '../user/editInform/editInform'
+      url: `../user/editInform/editInformid=${this.data.userId}`
     })
   },
   jumptoAddMyFood(){
@@ -92,7 +99,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: '../user/addFood/addFood'
+      url: `../user/addFood/addFood?id=${this.data.userId}`
     })
   },
   jumptoMyAddFood(){
@@ -100,8 +107,9 @@ Page({
       showToast('请先授权登录')
       return
     }
+    //console.log(this.data.userId)
     wx.navigateTo({
-      url: '../user/myAddFood/myAddFood'
+      url: `../user/myAddFood/myAddFood?id=${this.data.userId}`
     })
-  }
+  },
 })

@@ -12,8 +12,9 @@ Page({
   data: {
     pieOpt: {},
     hasCreateUser:false,
+    userId:null,
     userInfo: null,
-    goalList: null,
+    foodList: null,
     wholeTime: '',
     isDataLoaded: false,
     isPieInited: false,
@@ -23,6 +24,23 @@ Page({
     timer: '00:00:00',
     timerState: null
   },
+  getTodayFoodList() {
+    wx.cloud.callFunction({
+      name: 'getTodayFoodList',
+      data: {
+        ID:this.data.userId
+      }
+    }).then(res => {
+      console.log(this.data.userId)
+        this.setData({
+          foodList: res.result.data
+        })
+      console.log(this.data.foodList)       
+      })  
+    },
+    getTodayCustomFood(){
+     
+    },
   onLoad() {
     this.initUserInfo()
   },
@@ -37,15 +55,12 @@ Page({
         }
       })
       .then(() => { 
-        this.getGoalList()
+        this.getTodayFoodList()
       })
 
     this.setTimerTips()
   },
 
-  /**
-   * 点击授权按钮获取信息
-   */
   onAuthorize(e) {
     if (e.detail.userInfo) {
       this.setData({
@@ -114,6 +129,9 @@ Page({
           globalEnv.data.openid = idData.openId
           if (idData.userId) {
             globalEnv.data.userId = idData.userId
+            this.setData({
+              userId:globalEnv.data.userId,
+            })
             resolve()
           } else {
             reject(0)
@@ -145,50 +163,7 @@ Page({
       )
     })
   },
-  /**
-   * not original
-  onCreateGoal() {
-    if (!this.data.userInfo) {
-      showToast('请先授权登录')
-      return
-    }
-    this.setData({
-      isCreating: true
-    })
-  },
-
-  onAddGoal(e) {
-    const goalTitle = e.detail
-    if (!goalTitle.length) {
-      showToast('标题不能为空')
-      return
-    }
-
-    if (this.data.isUploading) {
-      return
-    }
-
-    this.data.isUploading = true
-    HomeModel.addGoal(globalEnv.data.userId, goalTitle).then(
-      res => {
-        this.setData({
-          isCreating: false
-        })
-        this.data.isUploading = false
-        showToast('创建成功', true)
-        this.getGoalList()
-      },
-      err => {
-        this.setData({
-          isCreating: false,
-          isUploading: false
-        })
-        showToast('创建失败')
-      }
-    )
-  },
-   */
-
+ 
   onGoalClick(e) {
     const { goalId } = e.currentTarget.dataset
 
@@ -237,31 +212,7 @@ Page({
   },
 
 
-  getGoalList() {
-    HomeModel.getGoalList(globalEnv.data.userId).then(
-      res => {
-        if (!res.result) {
-          this.setData({
-            goalList: []
-          })
-          return
-        }
-        const formattedData = HomeModel.formatGoalList(res.result.data)
-        this.setData({
-          goalList: formattedData.list,
-          wholeTime: formattedData.wholeTime
-        })
 
-        this.data.isDataLoaded = true
-        if (this.data.isPieInited) {
-          this.updatePieOption()
-        }
-      },
-      err => {
-        showToast('获取目标列表失败')
-      }
-    )
-  },
 
   updatePieOption() {
     const data = HomeModel.serializeForChart(this.data.goalList)

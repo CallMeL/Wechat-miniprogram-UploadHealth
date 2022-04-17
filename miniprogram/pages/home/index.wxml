@@ -29,14 +29,14 @@
   <view class="timer">{{timer}}</view>
 </view>
 <!-- 目标信息 -->
-<view class="project-container" wx:if="{{goalList.length}}">
+<view class="project-container" wx:if="{{foodList.length}}">
   <view class="count">
     你今天添加了
-    <view class="num">{{goalList.length}}</view>
+    <view class="num">{{foodList.length}}</view>
     个食物：
   </view>
   <view>
-    <view class="project" wx:for="{{goalList}}" wx:key="_id" bind:tap="onGoalClick" data-goal-id="{{item._id}}">
+    <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onGoalClick" data-goal-id="{{item._id}}">
       <view class="title">{{item.title}}</view>
       <view class="tags">
         <m-tag>累计: {{item.duration}}</m-tag>
@@ -45,10 +45,10 @@
     </view>
   </view>
 </view>
-<view class="loading" wx:elif="{{!goalList}}">
+<view class="loading" wx:elif="{{!foodList}}">
   <m-loading />
 </view>
-<m-tips warn="Hi，你还没有创建目标呢" tips="点击右下角的 “+” 开始吧！" wx:else></m-tips>
+<m-tips warn="Hi，今天还没有记录食物呢" tips="点击右下角的 “+” 开始吧！" wx:else></m-tips>
 <!-- 创建按钮 
 <image class="create" src="../../images/home/create.png" bind:tap="onCreateGoal" />
 </view>
