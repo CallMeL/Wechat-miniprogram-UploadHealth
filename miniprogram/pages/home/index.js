@@ -7,7 +7,6 @@ import { formatDurationToTimer } from '../../utils/dateTimeUtil'
 
 const globalEnv = getApp()
 let pie = null
-
 Page({
   data: {
     pieOpt: {},

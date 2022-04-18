@@ -8,7 +8,7 @@ Page({
   },
 onLoad: function(options) {
     this.data.userId = options.id
-    console.log(this.data.userId)
+    //console.log(this.data.userId)
     this.getFoodList()
 },
 
@@ -26,7 +26,7 @@ getFoodList(){
       this.setData({
         foodList: res.result.data
       })
-      console.log(res.result)
+      console.log(this.data.userId)
       
     })
   

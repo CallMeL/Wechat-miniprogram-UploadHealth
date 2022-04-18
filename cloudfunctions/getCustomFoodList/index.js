@@ -7,7 +7,7 @@ const db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
-  const { ID } = event
+  const ID = event.ID
   if (!ID) {
     console.log('no user found')
     return

@@ -1,6 +1,7 @@
 // pages/user/index.js
 //import { userInfo } from 'os'
 import HomeModel from '../../models/home'
+import { showToast } from '../../utils/UIUtil'
 const globalEnv = getApp()
 Page({
   data: {
@@ -90,7 +91,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: `../user/editInform/editInformid=${this.data.userId}`
+      url: `../user/editInform/editInform?id=${this.data.userId}`
     })
   },
   jumptoAddMyFood(){
