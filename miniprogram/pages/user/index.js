@@ -8,6 +8,7 @@ Page({
     userId:null,
     userInfo: null,
     Details:null,
+
   },
   onLoad() {
     this.initUserInfo()
@@ -94,7 +95,7 @@ Page({
       url: `../user/editInform/editInform?id=${this.data.userId}`
     })
   },
-  jumptoAddMyFood(){
+  jumptoAddMyFood(){  
     if (!this.data.userInfo) {
       showToast('请先授权登录')
       return
@@ -104,6 +105,7 @@ Page({
     })
   },
   jumptoMyAddFood(){
+    //this.getFoodList()
     if (!this.data.userInfo) {
       showToast('请先授权登录')
       return

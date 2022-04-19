@@ -21,12 +21,26 @@ methods: {
   {
     this.setData({focus:false});
   },
+
   query(e){
-   
     this.setData({
       inputValue: e.detail.value
   })  //首先回显输入的字符串
-    //实现搜索的功能
+  this.setData({
+    list: wx.cloud.callFunction({
+      name: 'searchFood',
+      data: {
+        searchContent:this.data.inputValue,
+        source:0
+      }
+    })
+  })
+  console.log(this.data.list)
+  
+
+
+/***
+     //实现搜索的功能
     var list = this.data.list2;		//先把第二条json存起来
     var list2 = [];		//定义一个数组
     //循环去取数据
@@ -49,63 +63,12 @@ methods: {
         list: list2
       })
     }
-  },
 
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+
+ */
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 }
 })
