@@ -1,3 +1,4 @@
+@import "../../../models/wxSearch/wxSearch.wxss";
 .container{
   position: relative;
 }

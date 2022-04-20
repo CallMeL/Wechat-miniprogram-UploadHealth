@@ -1,60 +1,56 @@
-// pages/test/test.js
-import Promisify from '../../utils/Promisify'
+//index.js
+//获取应用实例
+var WxSearch = require('../../models/wxSearch/wxSearch.js')
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data:{
-    showLoginBtn: false,
-    list:[
-        {
-           name:'嘻嘻1',
-           task_startTime:'2020/12/03 12:56',
-           task_endTime:'2020/12/03 15:56',
-           work_hours:'3.0',
-           money:0
-         },
-         {
-          name:'嘻嘻2',
-          task_startTime:'2020/12/03 12:56',
-          task_endTime:'2020/12/03 15:56',
-          work_hours:'3.0',
-          money:0
-        },
-        {
-          name:'嘻嘻3',
-          task_startTime:'2020/12/03 12:56',
-          task_endTime:'2020/12/03 15:56',
-          work_hours:'3.0',
-          money:0
-        }
-        
-       ],
-    inputValue: '',
-    focusId: ''
-   },
-   onLoad: function () {
-    // 获取用户授权，更新用户昵称与头像
-    Promisify(wx.getUserInfo)()
-      .then(this._updateUserInfo)
-      .catch(() => this.setData({showLoginBtn: true}))
+  data: {
+    wxSearchData:{
+      view:{
+        isShow: true
+      }, 
+    },
+    //mindKeys:['米饭','牛奶','苹果','黄瓜'],
+    keys:['米饭'],//自定义热门搜索   
   },
-  onClickLoginBtn: function (e) {
-    let { errMsg } = e.detail
-    if (errMsg.indexOf('fail') === -1) {
-      this._updateUserInfo(e.detail).then(() => {
-        this.setData({showLoginBtn: false})
-      })
-      wx.showToast({title: '授权成功'})
-    }
+  onLoad: function () {
+    console.log('onLoad')
+    var that = this
+    //初始化的时候渲染wxSearchdata
+   WxSearch.init(that,43,this.data.keys);
+   //WxSearch.initMindKeys(this.data.mindKeys);
   },
-  _updateUserInfo: function (userInfo) {
-    return updateUserInfoById(getUID(), {
-      nickname: userInfo.userInfo.nickName,
-      avatar: userInfo.userInfo.avatarUrl
-    }).then(res => app.setUserInfo(res))
+  wxSearchFn: function(e){
+    var that = this
+    WxSearch.wxSearchAddHisKey(that);
+    
+  },
+  wxSearchInput: function(e){
+    var that = this
+    WxSearch.wxSearchInput(e,that);
+    console.log(e.detail.value)
+  },
+  wxSerchFocus: function(e){
+    var that = this
+    WxSearch.wxSearchFocus(e,that);
+  },
+  wxSearchBlur: function(e){
+    var that = this
+    WxSearch.wxSearchBlur(e,that);
+  },
+  wxSearchKeyTap:function(e){
+    var that = this
+    WxSearch.wxSearchKeyTap(e,that);
+  },
+  wxSearchDeleteKey: function(e){
+    var that = this
+    WxSearch.wxSearchDeleteKey(e,that);
+  },
+  wxSearchDeleteAll: function(e){
+    var that = this;
+    WxSearch.wxSearchDeleteAll(that);
+  },
+  wxSearchTap: function(e){
+    var that = this
+    WxSearch.wxSearchHiddenPancel(that);
   }
-  
 })

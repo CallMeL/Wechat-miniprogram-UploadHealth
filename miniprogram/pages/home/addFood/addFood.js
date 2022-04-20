@@ -1,5 +1,14 @@
+var WxSearch = require('../../../models/wxSearch/wxSearch.js')
+var app = getApp()
 Page({
   data:{
+    wxSearchData:{
+      view:{
+        isShow: true
+      }, 
+    },
+    //mindKeys:['米饭','牛奶','苹果','黄瓜'],
+    keys:['米饭'],//自定义热门搜索     
     tabs: ['收入', '支出', '通知','我的'],
     stv: {
       windowWidth: 0,
@@ -11,6 +20,10 @@ Page({
     activeTab: 0
   },
   onLoad:function(options){
+    var that = this
+    //初始化的时候渲染wxSearchdata
+   WxSearch.init(that,43,this.data.keys);
+   //WxSearch.initMindKeys(this.data.mindKeys);
    try {
       let {tabs} = this.data; 
       var res = wx.getSystemInfoSync()
@@ -93,5 +106,40 @@ Page({
   },
   handlerTabTap(e) {
     this._updateSelectedPage(e.currentTarget.dataset.index);
+  },
+  wxSearchFn: function(e){
+    var that = this
+    WxSearch.wxSearchAddHisKey(that);
+    
+  },
+  wxSearchInput: function(e){
+    var that = this
+    WxSearch.wxSearchInput(e,that);
+    console.log(e.detail.value)
+  },
+  wxSerchFocus: function(e){
+    var that = this
+    WxSearch.wxSearchFocus(e,that);
+  },
+  wxSearchBlur: function(e){
+    var that = this
+    WxSearch.wxSearchBlur(e,that);
+  },
+  wxSearchKeyTap:function(e){
+    var that = this
+    WxSearch.wxSearchKeyTap(e,that);
+  },
+  wxSearchDeleteKey: function(e){
+    var that = this
+    WxSearch.wxSearchDeleteKey(e,that);
+  },
+  wxSearchDeleteAll: function(e){
+    var that = this;
+    WxSearch.wxSearchDeleteAll(that);
+  },
+  wxSearchTap: function(e){
+    var that = this
+    WxSearch.wxSearchHiddenPancel(that);
   }
+  
 })

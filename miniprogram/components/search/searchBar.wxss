@@ -21,15 +21,14 @@
   flex-direction: row;
   align-items: center;
   justify-content:space-between;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+  width: 100%;
+  /* margin-left: 10%;
+  margin-right: 10%; */
   margin-bottom: 2%;
   height: 90rpx;
   border-style: solid;
   border-color: rgb(199, 198, 198);
   border-width: 1rpx;
-  border-radius: 20rpx;
 }
 
 .search
