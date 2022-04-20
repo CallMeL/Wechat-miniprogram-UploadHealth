@@ -8,7 +8,7 @@ const _ = db.command
 
 exports.main = async (event, context) => {
   const searchContent = event.searchContent
-  const z = event.source
+  const source = event.source
   //source 1: foods,customs food db
   //source 0: food, system food db
   if (!searchContent) {
