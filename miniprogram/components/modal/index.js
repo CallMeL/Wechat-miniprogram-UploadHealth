@@ -1,14 +1,20 @@
 Component({
   properties: {
-    title: {
-      type: String
-    },
-    inputPlaceholder: {
-      type: String
-    },
+    food:Object,
+    foodName:String,
+    // foodDetail:{
+    //   foodFat:Number,
+    //   foodKcal:Number,
+    //   foodFat:Number,
+    //   foodCho:Number,
+    // }
   },
   data: {
-    foodName:"",
+    isShow_03: true,
+    listData_03:[['男', '女'],['已婚','未婚'],['在职','离职']],
+    picker_03_data:[],
+
+    // foodName:"",
     list: [{
         inputData: '',
         name: '蛋白质',
@@ -23,7 +29,25 @@ Component({
   },
 
   methods: {
-
+    showPicker_03: function () {
+      this.setData({
+        isShow_03: true
+      })
+      console.log(this.data.isShow_03)
+    },
+    sureCallBack_03 (e) {
+      let data = e.detail
+      this.setData({
+        isShow_03: false,
+        picker_03_data: e.detail.choosedData,
+        picker_03_index:JSON.stringify(e.detail.choosedIndexArr)
+      })
+    },
+    cancleCallBack_03 () {
+      this.setData({
+        isShow_03: false,
+      })
+    },
 
     bindFocus: function (event) {
       let id = event.currentTarget.dataset.id
@@ -54,6 +78,7 @@ Component({
       this.triggerEvent('input', e.detail.value, {})
     },
     onConfirm() {
+      console.log(this.properties.food)
       this.triggerEvent('confirm', this.data, {})
     },
     onCancel() {

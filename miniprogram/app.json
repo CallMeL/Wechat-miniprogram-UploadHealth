@@ -1,22 +1,21 @@
 {
   "pages": [
     "pages/home/addFood/addFood",
-    "pages/home/index",
-    "pages/test/test",
-   
-   
     
+    "pages/home/index",
+    
+    "pages/test/test",
     "pages/user/addFood/addFood",
     "pages/user/index",
     "pages/user/myAddFood/myAddFood",
     "pages/user/editInform/editInform",
-    
     "pages/detail/index",
     "pages/timer/index",
     "pages/summary/index",
     "custom-tab-bar/index",
     "pages/calendar/index",
-    "pages/user/test/order"
+    "pages/user/test/order",
+    "pages/home/food-detail/food-detail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

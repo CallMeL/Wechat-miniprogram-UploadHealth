@@ -1,15 +1,31 @@
-<!--index.wxml-->
-<import src="../../models/wxSearch/wxSearch"/>
-<view class="wxSearch-section">
-  <view class="wxSearch-pancel">
-    <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" />
-    <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
+<!-- Piker -->
+<button bindtap="showPicker_03">多列非联动picker</button>
+<view>选择数据：{{picker_03_data}}</view>
+<view>选择索引：{{picker_03_index}}</view>
+<picker
+	isShowPicker="{{isShow_03}}"
+	bindsure="sureCallBack_03"
+	bindcancle="cancleCallBack_03"
+	scrollType="normal"
+	listData="{{listData_03}}"
+></picker>
+<!-- 遮罩层 -->
+<view class="mask"></view>
+<!-- 目标创建对话框 -->
+<view class="create-modal">
+
+  <view class="modal-title">{{foodName}}</view>
+
+
+<!-- <view class = "input-line" wx:for="{{list}}" wx:for-item="item"  wx:key="index" data-item="{{item}}"> 
+  <view class="model-string">{{item.name}}</view>
+  <input data-id="{{index}}" maxlength="16" class="new-goal-title" value = "{{item.inputData}}" placeholder="{{item.union}}" bindfocus="bindFocus" bindinput="bindKeyInput"/>
+</view> -->
+
+
+  <view class="button-group">
+    <view class="cancel" bind:tap="onCancel">取消</view>
+    <view class="confirm" bind:tap="onConfirm">确定</view>
   </view>
-</view>
-<template is="wxSearch" data="{{wxSearchData}}"/>
-<view class="container">
-  <view style="font-size:20px;margin-top:10px;">微信小程序开发论坛-weappdev</view>
-  <view>wxSearch-weappdev.com</view>
-  <image style="width:90%;" src="/images/qr.png" mode="aspectFit" />
-  <image style="width:70%;" src="/images/logo.png" mode="aspectFit" />
+
 </view>

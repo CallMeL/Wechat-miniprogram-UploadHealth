@@ -2,13 +2,11 @@
 <view class="mask"></view>
 <!-- 目标创建对话框 -->
 <view class="create-modal">
-  <view class="modal-title">{{title}}</view>
-  <input placeholder="食物名称" bindinput="inputTitle"/>
-
-<view class = "input-line" wx:for="{{list}}" wx:for-item="item"  wx:key="index" data-item="{{item}}"> 
+  <view class="modal-title">{{foodName}}</view>
+<!-- <view class = "input-line" wx:for="{{list}}" wx:for-item="item"  wx:key="index" data-item="{{item}}"> 
   <view class="model-string">{{item.name}}</view>
   <input data-id="{{index}}" maxlength="16" class="new-goal-title" value = "{{item.inputData}}" placeholder="{{item.union}}" bindfocus="bindFocus" bindinput="bindKeyInput"/>
-</view>
+</view> -->
 
 
   <view class="button-group">
