@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "search-bar": "../../../components/search/searchBar"
+    "search-bar": "../../../components/search/searchBar",
+    "m-modal": "../../../components/modal/index",
+    "picker":"../../../components/picker/picker"
   }
 }

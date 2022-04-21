@@ -1,5 +1,4 @@
 <!--pages/home/addFood/addFood.wxml-->
-
 <view class="container">
   <view class="foodName">{{title}}</view>
   <input placeholder="食物名称" bindinput="inputTitle"/>

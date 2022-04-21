@@ -2,11 +2,7 @@ import * as echarts from '../../libs/ec-canvas/echarts'
 import pieOptions from '../../config/pieDefOption'
 import { showToast } from '../../utils/UIUtil'
 import HomeModel from '../../models/home'
-import TimerState from '../../config/timerState'
-import { formatDurationToTimer } from '../../utils/dateTimeUtil'
-
 const globalEnv = getApp()
-let pie = null
 Page({
   data: {
     pieOpt: {},
@@ -14,14 +10,10 @@ Page({
     userId:null,
     userInfo: null,
     foodList: null,
-    wholeTime: '',
     isDataLoaded: false,
     isPieInited: false,
     isCreating: false,
     isUploading: false,
-    timerGoalTitle: '',
-    timer: '00:00:00',
-    timerState: null
   },
   getTodayFoodList() {
     wx.cloud.callFunction({
@@ -37,9 +29,7 @@ Page({
       console.log(this.data.foodList)       
       })  
     },
-    getTodayCustomFood(){
-     
-    },
+
   onLoad() {
     this.initUserInfo()
   },
@@ -54,10 +44,8 @@ Page({
         }
       })
       .then(() => { 
-        this.getTodayFoodList()
+        //this.getTodayFoodList()
       })
-
-    this.setTimerTips()
   },
 
   onAuthorize(e) {
@@ -170,47 +158,6 @@ Page({
       url: `/pages/detail/index?id=${goalId}`
     })
   },
-
-  onJumpToTimerPage() {
-    wx.navigateTo({
-      url: '/pages/timer/index'
-    })
-  },
-
-  setTimerTips() {
-    const timerInfo = globalEnv.data
-    let stateDesc = ''
-
-    switch (timerInfo.timerState) {
-      case TimerState.NONE:
-        stateDesc = ''
-        break
-      case TimerState.PAUSE:
-        stateDesc = '暂停中'
-        this.setData({
-          timer: formatDurationToTimer(timerInfo.duration),
-          timerGoalId: timerInfo.goalId
-        })
-        break
-      case TimerState.ONGOING:
-        stateDesc = '进行中'
-        this.setData({
-          timer: formatDurationToTimer(timerInfo.duration)
-        })
-        globalEnv.startTimer(null, null, duration => {
-          this.setData({
-            timer: formatDurationToTimer(duration),
-            timerGoalId: timerInfo.goalId
-          })
-        })
-    }
-    this.setData({
-      timerState: stateDesc,
-      timerGoalTitle: timerInfo.goalTitle
-    })
-  },
-
-
 
 
   updatePieOption() {

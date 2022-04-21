@@ -124,14 +124,18 @@ function wxSearchHiddenPancel(that){
 
 function wxSearchKeyTap(e, that, callBack) {
     //回调
-    var temData = that.data.wxSearchData;
-    temData.value = e.target.dataset.key;
+    //var temData = that.data.wxSearchData;
+    //temData.value = e.target.dataset.key;
+    
+    wx.navigateTo({
+        url: `../../home/food-detail/food-detail?id=${e.target.dataset.key}`
+      })
+}
+function wxSearchOnAddFood(e,that){
     that.setData({
-        wxSearchData: temData
-    });
-    if (typeof (callBack) == "function") {
-        callBack();
-    }
+        isAdding: true,
+        nowAddingFood:e.target.dataset.key
+      })
 }
 function getHisKeys(that) {
     var value = [];
@@ -240,5 +244,6 @@ module.exports = {
     wxSearchAddHisKey:wxSearchAddHisKey,
     wxSearchDeleteKey:wxSearchDeleteKey,
     wxSearchDeleteAll:wxSearchDeleteAll,
-    wxSearchHiddenPancel:wxSearchHiddenPancel
+    wxSearchHiddenPancel:wxSearchHiddenPancel,
+    wxSearchOnAddFood:wxSearchOnAddFood
 }

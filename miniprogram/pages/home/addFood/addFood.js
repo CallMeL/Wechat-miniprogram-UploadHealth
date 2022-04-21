@@ -2,6 +2,8 @@ var WxSearch = require('../../../models/wxSearch/wxSearch.js')
 var app = getApp()
 Page({
   data:{
+    isAdding:false,
+    nowAddingFood:null,
     wxSearchData:{
       view:{
         isShow: true
@@ -140,6 +142,15 @@ Page({
   wxSearchTap: function(e){
     var that = this
     WxSearch.wxSearchHiddenPancel(that);
+  },
+  wxSearchOnAddFood:function(e){
+    var that = this
+    WxSearch.wxSearchOnAddFood(e,that);
+    console.log(this.data.nowAddingFood)
+    var queryBean = JSON.stringify(this.data.nowAddingFood)
+    wx.navigateTo({
+      url: '../../home/food-detail/food-detail?queryBean='+ queryBean
+    })
   }
   
 })
