@@ -145,11 +145,19 @@ Page({
   },
   wxSearchOnAddFood:function(e){
     var that = this
+    var list = [['1', '2','3', '4','5'],['1/2','1/4'],['克']];
     WxSearch.wxSearchOnAddFood(e,that);
     console.log(this.data.nowAddingFood)
+    var units = this.data.nowAddingFood.units
+    if (units.length>0) {
+      for (let index = 0; index < units.length; index++) {
+        const unit = this.data.nowAddingFood.units[index].unit
+        list[2].push(unit);       
+      }    
+    }
     var queryBean = JSON.stringify(this.data.nowAddingFood)
     wx.navigateTo({
-      url: '../../home/food-detail/food-detail?queryBean='+ queryBean
+      url: '../../home/food-detail/food-detail?queryBean='+ queryBean+ "&list=" + list,
     })
   }
   
