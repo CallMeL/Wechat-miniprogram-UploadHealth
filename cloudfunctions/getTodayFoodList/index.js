@@ -6,21 +6,20 @@ cloud.init({
 const db = cloud.database()
 const _ = db.command
 var today = new Date().toLocaleDateString()
-
-console.log(time)
 exports.main = async (event, context) => {
-  const { ID } = event
-  if (!ID) {
-    console.log('no user found')
+  if (!event.userId) {
+    console.log(event.userId)
     return
   }
+  const _ = db.command
+
   try {
-    console.log('in cloud'+ID)
+    console.log('in cloud search ' + event.userId)
     return await db
       .collection('food-records')
       .where({
-        userId:ID,
-        addDate:_.and(_.gte(new Date(today+" 00:00:00")),_.lte(new Date(today+" 23:59:59")))
+        userId:event.userId,
+        Date:_.and(_.gte(new Date(today+" 00:00:00")),_.lte(new Date(today+" 23:59:59")))
       })
       .get()
   } catch (e) {

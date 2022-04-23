@@ -15,23 +15,29 @@ Page({
     isCreating: false,
     isUploading: false,
   },
-  getTodayFoodList() {
+  getTodayFoodList:function(){
     wx.cloud.callFunction({
+      // 云函数名称
       name: 'getTodayFoodList',
+      // 传给云函数的参数
       data: {
-        ID:this.data.userId
-      }
-    }).then(res => {
-      console.log(this.data.userId)
+        userId:this.data.userId
+      },
+      success: res => {
         this.setData({
           foodList: res.result.data
         })
-      console.log(this.data.foodList)       
-      })  
-    },
+        console.log(this.data.foodList)
+      },
+      fail: res => {
+        console.log('fail!')
+     },
+    })
+  },
 
   onLoad() {
     this.initUserInfo()
+    
   },
   onShow() {
     // 若初始化id失败则在catch中初始化userId，否则直接获取列表
@@ -44,7 +50,7 @@ Page({
         }
       })
       .then(() => { 
-        //this.getTodayFoodList()
+        this.getTodayFoodList()
       })
   },
 

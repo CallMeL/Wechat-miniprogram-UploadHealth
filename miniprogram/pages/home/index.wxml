@@ -28,7 +28,7 @@
   </view>
   <view class="timer">{{timer}}</view>
 </view>
-<!-- 目标信息 -->
+<!-- 今日添加食物信息 -->
 <view class="project-container" wx:if="{{foodList.length}}">
   <view class="count">
     你今天添加了
@@ -36,11 +36,10 @@
     个食物：
   </view>
   <view>
-    <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onGoalClick" data-goal-id="{{item._id}}">
-      <view class="title">{{item.title}}</view>
+    <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onGoalClick" data-goal-id="{{item}}">
+      <view class="title">{{item.name}}</view>
       <view class="tags">
-        <m-tag>累计: {{item.duration}}</m-tag>
-        <m-tag wx:if="{{item.lastUpdate}}">最后记录：{{item.lastUpdate}}</m-tag>
+        <m-tag>{{item.howmany}}</m-tag>
       </view>
     </view>
   </view>
@@ -56,5 +55,3 @@
 <image class="create" src="../../images/home/create-btn.png" bind:tap="JumpToAddFoodPage" />
 </view>
 
-<!-- 食物表单 -->
-<m-modal title="食物信息：" wx:if="{{isCreating}}" bind:cancel="onCancelCreate" bind:confirm="onAddGoal"/>

@@ -3,20 +3,16 @@
 <m-modal title="新目标的名称是？" wx:if="{{isAdding}}" food="{{nowAddingFood}}"foodName="{{nowAddingFood.name}}" bind:cancel="onCancelCreate" bind:confirm="onAddGoal"/>
 -->
 <view>
-	<view class = "Detail-Container" wx:for="{{foodDetail}}"> 
-{{item.name}}:{{item.value}}{{item.unit}}
-</view>
-
+	<button bindtap="addFoodRecord">添加食物到我的</button>
+	<view class = "Detail-Container" wx:for="{{foodDetail}}"> {{item.name}}:{{item.value}}{{item.unit}}</view>
 	<button bindtap="showPicker_03">选择添加份量</button>
 </view>
-
 
 <view>选择数据：{{picker_03_data}}</view>
 <view>选择索引：{{picker_03_index}}</view>
 <picker
 	isShowPicker="{{isShow_03}}"
 	bindsure="sureCallBack_03"
- 
 	bindcancle="cancleCallBack_03"
 	scrollType="normal"
   indicatorStyle="height:40%"

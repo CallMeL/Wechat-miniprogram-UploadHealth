@@ -8,7 +8,6 @@ Page({
     userId:null,
     userInfo: null,
     Details:null,
-
   },
   onLoad() {
     this.initUserInfo()
