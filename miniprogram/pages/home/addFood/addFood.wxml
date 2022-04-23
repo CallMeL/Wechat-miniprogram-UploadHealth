@@ -8,7 +8,6 @@
 <template is="wxSearch" data="{{wxSearchData}}"/>
 <view class="container">
 
-
 <!--pages/home/addFood/search/searchBar.wxml-->
 <!-- 一般情况下的搜索框显示 -->
 

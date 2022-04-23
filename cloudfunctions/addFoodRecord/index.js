@@ -6,33 +6,24 @@ const db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
-  const { foodId, addData, note} = event
-
-  if (!foodId) {
+console.log(event.userId)
+  if (!event.foodId) {
     return
   }
-
   try {
-    await db
-      .collection('food-records')
-      .where({
-        foodId
-      })
-      .update({
-        data: {
-          records: _.push([
-            {
-              addData,
-              note
-            }
-          ])
-        }
-      })
-
-    await db
-      .collection('foods')
-      .doc(foodId)
-      .update()
+    return await db.collection('food-records').add({
+      data: {
+        userId: event.userId,
+        foodName:event.foodName,
+        foodId: event.foodId,
+        belongsto:event.belongsto,
+        howmany:event.howmany,
+        unit:event.unit,
+        source:event.source,
+        note:event.note,
+        Date:new Date()
+      }
+    })
   } catch (e) {
     console.log(e)
   }

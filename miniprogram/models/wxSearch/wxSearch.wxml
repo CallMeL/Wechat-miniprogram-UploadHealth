@@ -4,7 +4,7 @@
 
         <view class="wxSearchMindKey">
             <view class="wxSearchMindKeyList">
-                <block wx:for="{{wxSearchData.mindKeys}}" wx:if="{{index<3}}">
+                <block wx:for="{{wxSearchData.mindKeys}}" wx:if="{{index<5}}">
                 <view ></view>
                     <view class="wxSearchMindKeyItem">
                     <text bindtap="wxSearchKeyTap" data-key="{{item._id}}">{{item.name}}</text>

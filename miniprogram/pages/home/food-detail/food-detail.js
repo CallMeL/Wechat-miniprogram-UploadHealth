@@ -1,5 +1,5 @@
 // pages/home/food-detail/food-detail.js
-
+import { showToast } from '../../../utils/UIUtil'
 const globalEnv = getApp()
 Page({ 
   data: {
@@ -9,8 +9,11 @@ Page({
     picker_03_data:[],
     unit : null,
     food:Object,
-    foodId:null,
-    foodDetail:null
+    foodDetail:null,
+    note:null,
+    belongsto:'早餐',
+    howmany:0,
+    source:true,//is from our db
   },
 
   onLoad: function (options) {
@@ -22,19 +25,36 @@ Page({
       listData_03:options.list,
       isShow_03:true
     })
-
-    //this.data.listData_03[2].push(this.data.food.units[0].unit)
     console.log(this.data.listData_03)
-    //console.log(this.data.food) 
-    //console.log(this.data.food.units[0].gram) 
+
   },
-          //* 金额千分位加逗号，保留2位小数，不足补零，否则四舍五入
-        // * 参数说明：
-        // * num：要格式化的数字 string或者number
-        // * decimals：保留几位小数
-        // * thousandsSep：千分位符号
-        // return 金额格式的字符串,如'1,234,567.45'
-        // * */
+  addFoodRecord:function(){
+    wx.cloud.callFunction({
+      name: 'addFoodRecord',
+      data: {
+        userId:globalEnv.data.userId,
+        foodId:this.data.food._id,
+        foodName:this.data.food.name,
+        belongsto:this.data.belongsto,
+        howmany:this.data.howmany,
+        unit:this.data.unit,
+        source:this.data.source,
+        note:this.data.note
+      },
+      success: res => {
+        console.log('done!')
+        showToast('创建成功', true)
+        // this.getGoalList()
+        wx.navigateBack({
+          delta: 1,
+        })
+      },
+      fail: res => {
+        console.log('fail!')
+        showToast('创建失败')
+     },
+    })
+  },
   showPicker_03: function () {
     this.setData({
       isShow_03: true
@@ -48,12 +68,9 @@ Page({
       picker_03_index:JSON.stringify(e.detail.choosedIndexArr)
     })
     var num1 = parseInt(this.data.picker_03_data[0])
-    //console.log(this.data.listData_03[0])
     var num2 = this.data.picker_03_data[1].replace("/","")
-    //console.log(num2[1])
     num2 = parseInt(num2[1])
     var sum = Number(num1+(1/num2))
-    //console.log(sum)
     for (let index = 0; index < this.data.foodDetail.length; index++) {
       var up ='foodDetail['+index+'].value'
       var num = this.data.foodDetail[index].value
@@ -62,7 +79,11 @@ Page({
         foodDetail:this.data.foodDetail
       })
     }
-    console.log(this.data.foodDetail)
+    this.setData({
+      howmany:sum,
+      unit:this.data.picker_03_data[2]
+    })
+    console.log(this.data.howmany)
   },
   cancleCallBack_03 () {
     this.setData({
