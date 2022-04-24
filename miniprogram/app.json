@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/home/index",
     "pages/home/addFood/addFood",
+    "pages/home/index",
+   
     "pages/home/food-detail/food-detail",   
     "pages/test/test",
     "pages/user/addFood/addFood",
