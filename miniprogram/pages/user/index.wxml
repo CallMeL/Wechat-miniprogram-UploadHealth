@@ -14,16 +14,21 @@
 <!--edit list-->
 <view class="btn-list">
   <button class="edit-button-1" bindtap="jumptoEditInform">
-  <view class="btn-note">个人信息修改</view>
+    <!-- <image style="background-image: url('https://636c-cloud1-6gaunktybd5c7902-1310837650.tcb.qcloud.la/setting.png?sign=caefdfd0f4b7df2a7159bebd315f4163&t=1650979204');"/> -->
+    <view class="btn-note">个人信息修改</view>
+    <image class="btn-image" src="../../images/user/setting.png" mode="aspectFit"style="right:-200rpx;"></image> 
   </button>
-
-  <button class="edit-button-1" bindtap="jumptoAddMyFood">
-  <view class="btn-note">添加我的食物</view>
+<view class="horizon-list">
+  <button class="edit-button-2" bindtap="jumptoAddMyFood" >
+  <image class="btn-image"src="../../images/user/FoodAdd.46.13.png" mode="aspectFit" style="right:-130rpx;"></image> 
+  <view class="btn-note" >自定食物</view>
   </button>  
-
-  <button class="edit-button-1" bindtap="jumptoMyAddFood">
-  <view class="btn-note">我添加过的食物</view>
+  <button class="edit-button-2" bindtap="jumptoMyAddFood">
+  <view class="btn-note">我的食物</view>
+  <image class="btn-image"src="../../images/user/addFood.31.25.png" mode="aspectFit"style="right:-100rpx;"></image> 
   </button>  
+</view>
+
 </view>
 
 
