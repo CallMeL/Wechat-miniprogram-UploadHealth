@@ -5,7 +5,7 @@ Page({
   data: {
     temp:[],
     isShow_03: false,
-    listData_03:[['1', '2','3', '4','5'],['1/2','1/4'],['每单位']],
+    listData:[['1', '2','3', '4','5'],['1/2','1/4'],['每单位']],
     picker_03_data:[],
     unit : null,
     food:Object,
@@ -22,10 +22,11 @@ Page({
     that.setData({
       food: queryBean,
       foodDetail: queryBean.detail,
-      listData_03:options.list,
+      listData:options.list,
+      source:options.source,
       isShow_03:true
     })
-    console.log(this.data.listData_03)
+    //console.log(this.data)
 
   },
   addFoodRecord:function(){

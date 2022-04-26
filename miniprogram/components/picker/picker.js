@@ -13,6 +13,7 @@ Component({
     listData: {
       type: Array,
       value: [],
+    
       observer: function(newVal) {
         if (newVal.length === 0 || this._compareDate()) return
         this._setTempData()

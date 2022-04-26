@@ -1,10 +1,9 @@
 @import "../../../models/wxSearch/wxSearch.wxss";
+.wxSearch-section{
+margin-top: 10%;
+}
 .container{
   position: relative;
-}
-.search-container{
-  position: absolute;
-  /* z-index: 2; */
 }
 .stv-container {
   position: fixed;
@@ -29,12 +28,12 @@
   perspective: 1000;
 }
 .stv-container .tab-bar {
+  margin-top: 1%;
+  height: 5%;
   position: relative;
   display: flex;
   font-size: 30rpx;
   color: #666666;
-  margin-top: 80%;
- 
 }
 .stv-container .tab-bar .tab-active {
   color: #2d80ff;
@@ -43,7 +42,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 16rpx;
   padding-bottom: 20rpx;
 }
 .stv-container .tab-bar .under-line {
@@ -51,86 +49,4 @@
   bottom: 0;
   height: 6rpx;
   background-color: #2d80ff;
-}
-.stv-container .scroll-view {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #e7eaef;
-}
-.stv-container .scroll-view .scroll-view-wrapper {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  display: flex;
-}
-.stv-container .scroll-view .scroll-view-wrapper .one-scene {
-  height: 100%;
-}
-.one-scene text {
-  display: flex;
-  justify-content: center;
-  padding-top: 200rpx;
-}
-/* pages/home/addFood/search/searchBar.wxss */
-/* 搜索框样式 */
-.searchBar{
-  position: fixed;
-  width: 100%;
-  height: 50%; 
-  align-items: center;
-}
-.font1{
-  
-}.font2{
-  color: darkgray;
-}
-.scrollview{
-  position:absolute;
-  align-items: center;
-  margin-top: 5%;
-}
-.scrollItem{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content:space-between;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 2%;
-  height: 90rpx;
-  border-style: solid;
-  border-color: rgb(199, 198, 198);
-  border-width: 1rpx;
-  border-radius: 20rpx;
-}
-
-.search
-{
-  display:flex;
-  flex-direction: row;
-  justify-content:space-between;
-  align-items: center;
-  text-align: center;
-  width:100%;
-  height:15%;
-  background-color:rgb(168, 167, 167);
-  margin-top: 5%;
-  border:1rpx hidden hidden hidden solid  whitesmoke;
-}
-
-.search_input
-{
-  width: 80%;  /*除了图标剩余全是输入框的位置*/
-  text-align:center;
-  justify-content: center;
-}
-
-/* 搜索框小图标 */
-.search_image
-{ 
-  width:20%;
-  height:40rpx;
-  padding-right:20rpx;
 }

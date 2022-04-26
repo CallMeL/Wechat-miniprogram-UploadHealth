@@ -17,6 +17,6 @@
 	scrollType="normal"
   indicatorStyle="height:40%"
   titleText="选择份量"
-	listData="{{listData_03}}"
+	listData="{{listData}}"
 ></picker>
 
