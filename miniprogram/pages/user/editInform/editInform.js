@@ -4,6 +4,8 @@ import { showToast } from '../../../utils/UIUtil'
 const globalEnv = getApp()
 Page({
   data: {
+    parameter: [{ id: 1, name: '千克' }, { id: 2, name: '克' }],
+    parameter2: [{ id: 1, name: '厘米' }, { id: 2, name: '米' }],
     Details:null,
     activity: 0,
     email:"",
@@ -12,9 +14,13 @@ Page({
     height:null,
     weight:null,
     age:null,
+    save_unit2:null,
+    save_unit:null,
 
   },
   onLoad() {
+    this.data.parameter[0].checked = true;
+    this.data.parameter2[0].checked = true;
       wx.cloud.database().collection('users')
       .doc(globalEnv.data.userId).get()
      .then(res =>{
@@ -31,9 +37,43 @@ Page({
         age:this.data.Details.age,
         height:this.data.Details.height,
         weight:this.data.Details.weight,
+        parameter: this.data.parameter,
+        parameter2: this.data.parameter2,
        })
      })
      
+  },
+  parameterTap:function(e){//e是获取e.currentTarget.dataset.id所以是必备的，跟前端的data-id获取的方式差不多
+    var that=this
+    var this_checked = e.currentTarget.dataset.id
+    var parameterList = this.data.parameter//获取Json数组
+    for (var i = 0; i < parameterList.length;i++){
+      if (parameterList[i].id == this_checked){
+        parameterList[i].checked = true;//当前点击的位置为true即选中
+      }
+      else{
+        parameterList[i].checked = false;//其他的位置为false
+      }
+    }
+    that.setData({
+      parameter: parameterList
+    })
+  },
+  parameterTap2:function(e){//e是获取e.currentTarget.dataset.id所以是必备的，跟前端的data-id获取的方式差不多
+    var that=this
+    var this_checked = e.currentTarget.dataset.id
+    var parameterList2 = this.data.parameter2//获取Json数组
+    for (var i = 0; i < parameterList2.length;i++){
+      if (parameterList2[i].id == this_checked){
+        parameterList2[i].checked = true;//当前点击的位置为true即选中
+      }
+      else{
+        parameterList2[i].checked = false;//其他的位置为false
+      }
+    }
+    that.setData({
+      parameter2: parameterList2
+    })
   },
   editActivity: function(e) {
     this.setData({
@@ -55,7 +95,7 @@ Page({
       height: e.detail.value,
     })
   },
-  editWeight:function(e) {
+  editWeitght:function(e) {
     this.setData({
       weight: e.detail.value,
     })
@@ -71,6 +111,17 @@ Page({
     })
   },
   onConfirm(){
+    var realWeight,realHeight;
+    realWeight = this.data.weight
+    realHeight = this.data.height
+    if(!this.data.parameter[0].checked){
+      realWeight = (this.data.weight / 2).toFixed(2)
+      console.log(realWeight)
+    }
+    if(!this.data.parameter2[0].checked){
+      realHeight = (this.data.height * 100).toFixed(2)
+      console.log(realHeight)
+    }
     wx.cloud.callFunction({
       name: 'editUser',
       data: {
@@ -79,8 +130,8 @@ Page({
         email:this.data.email,
         gender:this.data.gender,
         age:this.data.age,
-        weight:this.data.weight,
-        height:this.data.height,
+        weight:realWeight,
+        height:realHeight,
       }
     }).then(
       

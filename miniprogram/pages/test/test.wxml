@@ -1,31 +1,5 @@
-<!-- Piker -->
-<button bindtap="showPicker_03">多列非联动picker</button>
-<view>选择数据：{{picker_03_data}}</view>
-<view>选择索引：{{picker_03_index}}</view>
-<picker
-	isShowPicker="{{isShow_03}}"
-	bindsure="sureCallBack_03"
-	bindcancle="cancleCallBack_03"
-	scrollType="normal"
-	listData="{{listData_03}}"
-></picker>
-<!-- 遮罩层 -->
-<view class="mask"></view>
-<!-- 目标创建对话框 -->
-<view class="create-modal">
-
-  <view class="modal-title">{{foodName}}</view>
-
-
-<!-- <view class = "input-line" wx:for="{{list}}" wx:for-item="item"  wx:key="index" data-item="{{item}}"> 
-  <view class="model-string">{{item.name}}</view>
-  <input data-id="{{index}}" maxlength="16" class="new-goal-title" value = "{{item.inputData}}" placeholder="{{item.union}}" bindfocus="bindFocus" bindinput="bindKeyInput"/>
-</view> -->
-
-
-  <view class="button-group">
-    <view class="cancel" bind:tap="onCancel">取消</view>
-    <view class="confirm" bind:tap="onConfirm">确定</view>
-  </view>
-
+<view style="height:100px" wx:for='{{list}}' wx:key='none'>{{index}}</view>
+<view style="padding:15px;text-align:center;color:grey" wx:if='{ {list.length>limit}}'>
+  <view wx:if='{{(!isEndOfList)}}'>正在加载数据...</view>
+  <view wx:else>----END----</view>
 </view>

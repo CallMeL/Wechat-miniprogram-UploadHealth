@@ -1,15 +1,20 @@
 {
   "pages": [
-    "pages/home/addFood/addFood",
     "pages/user/index",
+    "pages/user/editInform/editInform",
+    
+    "pages/home/addFood/addFood",
+    "pages/test/test",
+   
+   
     "pages/home/index",
    
     "pages/home/food-detail/food-detail",   
-    "pages/test/test",
+    
     "pages/user/addFood/addFood",
     
     "pages/user/myAddFood/myAddFood",
-    "pages/user/editInform/editInform",
+    
     "pages/detail/index",
     "pages/timer/index",
     "pages/summary/index",

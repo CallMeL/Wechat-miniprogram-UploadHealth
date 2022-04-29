@@ -157,15 +157,20 @@ function getHisKeys(that) {
 function wxSearchAddHisKey(that) {
     wxSearchHiddenPancel(that);
     var text = that.data.wxSearchData.value;
+    //var array = that.data.wxSearchData.mindKeys;
+    var sour = that.data.activeTab;
     if(typeof(text) == "undefined" || text.length == 0){return;}
     wx.cloud.callFunction({
         name: 'searchFood',
         data: {
             searchContent:text,
-            srouce:0
+            source:sour,
+            limit: 20, //每次拉取数量
+            //old_data:array
         },
         complete: res => {
             var returnFoodList = res.result.data
+            //console.log(returnFoodList)
             var temData = that.data.wxSearchData;
             temData.mindKeys = returnFoodList
             temData.value = text;
@@ -176,6 +181,7 @@ function wxSearchAddHisKey(that) {
                 wxSearchData: temData
             });
             console.log(temData)
+            console.log(sour)
           },
       })
     
@@ -230,7 +236,9 @@ function wxSearchDeleteAll(that){
         } 
     })
 }
-
+function onReachBottom() {  
+    !this.data.isEndOfList && this.getData()
+  }
 
 
 module.exports = {

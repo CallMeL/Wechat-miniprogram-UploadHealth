@@ -1,9 +1,46 @@
-<input class="input-line" placeholder="{{activity}}" bindinput="editActivity"/>
-<input class="input-line" placeholder="{{email}}" bindinput="editEmail"/>
-<input class="input-line" placeholder="{{age}}" bindinput="editAge"/>
-<input class="input-line" placeholder="{{gender}}" bindinput="editGender"/>
-<input class="input-line" placeholder="{{weight}}" bindinput="editWeitgh"/>
-<input class="input-line" placeholder="{{height}}" bindinput="editHeight"/>
 
-<button bind:tap="onConfirm">确定</button>
-<button bind:tap="onCancel">取消</button>
+
+
+<view class="Infor-list">
+<view class="line">
+  <text class="title">消耗：</text>
+  <input class="input-line" placeholder="{{activity}}" bindinput="editActivity"/>
+
+</view>
+<view class="line"> 
+  <text class="title">邮箱：</text>
+  <input class="input-line" placeholder="{{email}}" bindinput="editEmail"/>
+</view>
+<view class="line"> 
+  <text class="title">年龄：</text>
+  <input class="input-line" placeholder="{{age}}" bindinput="editAge"/>
+</view>
+<view class="line"> 
+  <text class="title">性别：</text>
+  <input class="input-line" placeholder="{{gender}}" bindinput="editGender"/>
+</view>
+<view class="line"> 
+  <text class="title">体重：</text>
+  <input class="input-line" placeholder="{{weight}}" bindinput="editWeitght"/>
+  <view class='parameter-wrap'>
+    <block wx:for="{{parameter}}" wx:key="parameter">
+    <text class='parameter-info text-over {{item.checked?"checked_parameter":"unchecked_parameter"}}' data-id='{{item.id}}' bindtap='parameterTap'>{{item.name}}</text>
+    </block>
+  </view>
+
+</view>
+<view class="line"> 
+  <text class="title">身高：</text>
+  <input class="input-line" placeholder="{{height}}" bindinput="editHeight"/>
+  <view class='parameter-wrap'>
+    <block wx:for="{{parameter2}}" wx:key="parameter">
+    <text class='parameter-info text-over {{item.checked?"checked_parameter":"unchecked_parameter"}}' data-id='{{item.id}}' bindtap='parameterTap2'>{{item.name}}</text>
+    </block>
+  </view>
+</view>
+</view>
+<view class="button-group">
+    <view class="cancel" bind:tap="onCancel">取消</view>
+    <view class="confirm" bind:tap="onConfirm">确定</view>
+</view>
+

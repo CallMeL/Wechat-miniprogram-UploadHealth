@@ -5,7 +5,7 @@
 
 <view class = "Detail-Container" wx:for="{{list}}" wx:for-item="item"  wx:key="index" data-item="{{item}}"> 
   <view class="Detail-name">{{item.name}}</view>
-  <input type="text" data-id="{{index}}" maxlength="16" class="new-goal-title" value = "{{item.inputData}}"  bindfocus="bindFocus" bindinput="bindKeyInput"/>
+  <input type="text" data-id="{{index}}" maxlength="16" class="new-goal-title" value = "{{item.vaule}}"  bindfocus="bindFocus" bindinput="bindKeyInput"/>
 
   <view class="Detail-unit">{{item.unit}}</view>
 

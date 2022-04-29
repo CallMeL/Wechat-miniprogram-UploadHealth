@@ -8,20 +8,15 @@ const _ = db.command
 
 exports.main = async (event, context) => {
   const {userId, foodname,foodDetail} = event
+  //detail = foodDetail
   //if (!foodName||!foodInform|| !userId) return
   try {
     const food = await db.collection('foods').add({
       data: {
         userId,
-        foodname,
-        foodDetail,
+        name:foodname,
+        detail:event.foodDetail,
         createDate: new Date(),
-      }
-    })
-
-    await db.collection('food-records').add({
-      data: {
-        foodId: food._id
       }
     })
   } catch (e) {

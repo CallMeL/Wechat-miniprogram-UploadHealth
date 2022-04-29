@@ -4,13 +4,13 @@
 
         <view class="wxSearchMindKey">
             <view class="wxSearchMindKeyList">
-                <block wx:for="{{wxSearchData.mindKeys}}" wx:if="{{index<5}}">
+                <block wx:for="{{wxSearchData.mindKeys}}">
                     <view class="wxSearchMindKeyItem">
                     <text bindtap="wxSearchKeyTap" data-key="{{item._id}}">{{item.name}}</text>
                     <text class="wxSearchHistoryItemDel" bindtap="wxSearchOnAddFood" data-key="{{item}}">添加</text>
                     </view>                
                 </block>
-                <button  style="display:{{wxSearchData.view.isShowSearchHistory? 'none':''}}">more</button>             
+                <button bindtap="loadmore" style="display:{{wxSearchData.view.isShowSearchHistory? 'none':''}}">more</button>             
             </view>
         </view>
 
