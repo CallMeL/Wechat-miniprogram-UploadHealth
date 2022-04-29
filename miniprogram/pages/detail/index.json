@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "m-tag": "../../components/tag/index",
-    "m-tips": "../../components/tips/index",
-    "m-loading": "../../components/loading/index",
-    "m-modal": "../../components/modal/index"
-  }
-}
