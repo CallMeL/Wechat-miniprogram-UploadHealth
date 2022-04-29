@@ -7,8 +7,8 @@ const db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
-  let old_data = event.old_data;
-  console.log(old_data)
+  //let old_data = event.old_data;
+  //console.log(old_data)
   const searchContent = event.searchContent
   const source = event.source
   //source 1: foods,customs food db
@@ -27,11 +27,7 @@ exports.main = async (event, context) => {
           $regex:'.*' + searchContent + '.*'
         }
       })
-      //.skip(old_data.length)
-      //.limit(this.data.limit)
-      .get({
-
-      })
+      .get()
     }else{
       return await db
       .collection('food')

@@ -1,12 +1,10 @@
 <!--pages/home/addFood/addFood.wxml-->
 <view class="container">
-  <view class="foodName">{{title}}</view>
-  <input placeholder="食物名称" bindinput="inputTitle"/>
+  <input class="foodName" placeholder="食物名称" bindinput="inputTitle"/>
 
 <view class = "Detail-Container" wx:for="{{list}}" wx:for-item="item"  wx:key="index" data-item="{{item}}"> 
   <view class="Detail-name">{{item.name}}</view>
-  <input type="text" data-id="{{index}}" maxlength="16" class="new-goal-title" value = "{{item.vaule}}"  bindfocus="bindFocus" bindinput="bindKeyInput"/>
-
+  <input type="text" data-id="{{index}}" maxlength="16" class="new-goal-title" value = "{{item.value}}"  bindfocus="bindFocus" bindinput="bindKeyInput"/>
   <view class="Detail-unit">{{item.unit}}</view>
 
 </view>

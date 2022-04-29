@@ -36,8 +36,8 @@
     个食物：
   </view>
   <view>
-    <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onGoalClick" data-goal-id="{{item}}">
-      <view class="title">{{item.name}}</view>
+    <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}">
+      <view class="title">{{item.foodName}}</view>
       <view class="tags">
         <m-tag>{{item.howmany}}</m-tag>
       </view>

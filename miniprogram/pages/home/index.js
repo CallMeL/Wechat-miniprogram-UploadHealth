@@ -18,7 +18,7 @@ Page({
   getTodayFoodList:function(){
    wx.cloud.callFunction({
       // 云函数名称
-      name: 'test',//getTodayFoodList
+      name: 'getTodayFoodList',//getTodayFoodList
       // 传给云函数的参数
       data: {
         userId:globalEnv.data.userId
@@ -26,7 +26,7 @@ Page({
       success: res => {
         //console.log(this.data.userId)
         this.setData({
-          foodList: res
+          foodList: res.result.data
         })
         console.log(this.data.foodList)
       },
@@ -161,11 +161,10 @@ Page({
     })
   },
  
-  onGoalClick(e) {
-    const { goalId } = e.currentTarget.dataset
-
+  onFoodClick(e) {
+    var queryBean = JSON.stringify(e.currentTarget.dataset.inform)
     wx.navigateTo({
-      url: `/pages/detail/index?id=${goalId}`
+      url: './food-detail/food-detail?queryBean='+ queryBean+"&fromSearch="+false
     })
   },
 

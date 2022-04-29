@@ -3,31 +3,71 @@ import { showToast } from '../../../utils/UIUtil'
 const globalEnv = getApp()
 Page({ 
   data: {
+    fromSearch:false,//false: direct from search Page, true: direct from home Page
     temp:[],
-    isShow_03: false,
-    listData:[['1', '2','3', '4','5'],['1/2','1/4'],['每单位']],
-    picker_03_data:[],
+    isShow_03: false,listData:[['1', '2','3', '4','5'],['0','1/2','1/4'],['每单位']],picker_03_data:[],
     unit : null,
-    food:Object,
-    foodDetail:null,
+    food:Object,foodId:null,foodDetail:null,foodName:null,
     note:null,
-    belongsto:'早餐',
-    howmany:0,
-    source:true,//is from our db
+    belongsto:'早餐',howmany:0,source:null,//is from our db
   },
-
   onLoad: function (options) {
     var that=this
     var queryBean = JSON.parse(options.queryBean);
-    that.setData({
-      food: queryBean,
-      foodDetail: queryBean.detail,
-      listData:options.list,
-      source:options.source,
-      isShow_03:true
-    })
-    //console.log(this.data)
+    console.log('from Search?'+options.fromSearch)
+    if(options.fromSearch==true){
+      console.log('in true')
+      that.setData({
+        fromSearch:options.fromSearch,
+        food: queryBean,
+        foodName:queryBean.name,
+        foodDetail: queryBean.detail,
+        listData:options.list,
+        source:options.source,
+        isShow_03:true
+      })
+    }else{
+      this.setData({
+        foodId:queryBean.foodId,
+        belongsto:queryBean.belongsto,
+        howmany:queryBean.howmany,
+        source:queryBean.source,
+        isShow_03:false,
+      })
+      this.getFoodById()
+    }
+    console.log(this.data)
 
+  },
+  getFoodById:function(){
+    wx.cloud.callFunction({
+      name:'getFoodByID',
+      data:{
+        foodId:this.data.foodId,
+        source:this.data.source
+      },
+      success: res => {
+        console.log('done!')
+        console.log('get food')
+        console.log(res.result)
+        this.setData({
+          foodDetail:res.result.data[0].detail,
+          foodName:res.result.data[0].name,
+          createDate:res.result.data[0].createDate,
+        })
+        for (let index = 0; index < this.data.foodDetail.length; index++) {
+          var up ='foodDetail['+index+'].value'
+          var num = this.data.foodDetail[index].value
+          this.setData({
+            [up] : (num * this.data.howmany).toFixed(2),
+            foodDetail:this.data.foodDetail
+          })
+        }
+      },
+      fail: res => {
+        console.log('fail!'+res)
+     },
+    })
   },
   addFoodRecord:function(){
     wx.cloud.callFunction({
@@ -71,7 +111,11 @@ Page({
     var num1 = parseInt(this.data.picker_03_data[0])
     var num2 = this.data.picker_03_data[1].replace("/","")
     num2 = parseInt(num2[1])
-    var sum = Number(num1+(1/num2))
+    if(num2!=0){
+      var sum = Number(num1+(1/num2))
+    }else{
+      var sum = Number(num1)
+    }
     for (let index = 0; index < this.data.foodDetail.length; index++) {
       var up ='foodDetail['+index+'].value'
       var num = this.data.foodDetail[index].value

@@ -3,19 +3,15 @@
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
+  margin-top: 5%;
 }
-.foodName {
+.foodName{
   color: #333;
   font-weight: bold;
   font-size: 40rpx;
   margin-bottom: 5%;
 }
-.input-line{
-  display:flex;
-  justify-content:space-around;
-  align-items: left;
-  margin-bottom: 36rpx;
-}
+
 .Detail-Container{
   display: flex;
   justify-content:space-around;
@@ -27,9 +23,7 @@
   border-left: 6px solid #1565c0;
   text-align: left;
 }
-input[type=text] {
-  background-color: #3CBC8D;
-  color: white;
+.Container .input[type=text] {
   margin-left: 20%;
   margin-right: 20%;
 }
