@@ -8,16 +8,16 @@ Page({
       view:{
         isShow: true
       }, 
+      mindKeys:['米饭','牛奶','苹果','黄瓜'],
     },
-    //mindKeys:['米饭','牛奶','苹果','黄瓜'],
+    
     keys:['米饭'],//自定义热门搜索     
     tabs: ['系统食物','我的食物'],
     stv: {
       windowWidth: 0,
       lineWidth: 0,
       offset: 0,
-      tStart: false,
-      
+      tStart: false,      
     },
     activeTab: 0
   },
@@ -87,15 +87,15 @@ Page({
     WxSearch.wxSearchOnAddFood(e,that);
     console.log(this.data.nowAddingFood)
     var units = this.data.nowAddingFood.units
-    if (units.length>0) {
-      for (let index = 0; index < units.length; index++) {
-        const unit = this.data.nowAddingFood.units[index].unit
-        list[2].push(unit);       
-      }    
-    }
+    // if (units.length>0) {
+    //   for (let index = 0; index < units.length; index++) {
+    //     const unit = this.data.nowAddingFood.units[index].unit
+    //     list[2].push(unit);       
+    //   }    
+    // }
     var queryBean = JSON.stringify(this.data.nowAddingFood)
     wx.navigateTo({
-      url: '../../home/food-detail/food-detail?queryBean='+ queryBean+ "&list=" + list+ "&source=" + this.data.activeTab,
+      url: '../../home/food-detail/food-detail?queryBean='+ queryBean+ "&list=" + list+ "&source=" + this.data.activeTab+'&fromSearch='+true,
     })
   }
   

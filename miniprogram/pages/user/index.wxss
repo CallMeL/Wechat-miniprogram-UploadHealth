@@ -14,7 +14,7 @@ right: 0;
 }
 .btn-list .edit-button-1{
   background-color: #a9c1e0;
-  margin:0 20px;
+  margin:0 5%;
   height: 70px;
   border-radius: 10px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -22,14 +22,14 @@ right: 0;
 .btn-list .horizon-list{
   position: relative;
   text-align:center;
-  margin-left:-20px;
-  margin-right:-20px;
+  margin-left:-10%;
+  margin-right:-10%;
   padding-top: 25px;
 }
 .btn-list .edit-button-2{
   background-color: #a9c1e0;
-  width: 150px;
-  margin:0 20px;
+  width: 32%;
+  margin:0 5%;
   display:inline-block;
   line-height: 120px;
   border-radius: 10px;

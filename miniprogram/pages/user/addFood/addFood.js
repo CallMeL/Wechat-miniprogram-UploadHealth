@@ -12,27 +12,22 @@ Page({
     foodName:"",
     foodImage:" ",
     list: [{
-        inputData: '',
+        value: '100',
         name: '热量',
-        unit: '大卡',
+        unit: '千卡',
       }, {
-        inputData: '',
+        value: '10',
         name: '脂肪',
         unit: '克',
       }, {
-        inputData: '',
+        value: '50',
         name: '碳水化合物',
         unit: '克',
       }, {
-        inputData: '',
+        value: '20',
         name: '蛋白质',
         unit: '克',
-      }, {
-        inputData: '',
-        name: '热量',
-        unit: '大卡',
-      }, 
-    
+      }   
     ],
       inputValue: '',
       focusId: '',
@@ -87,7 +82,7 @@ Page({
       let that = this;
       let value = Number(event.detail.value)
       let id = event.currentTarget.dataset.id
-      var up = 'list[' + id + '].inputData';
+      var up = 'list[' + id + '].value';
       this.setData({
         [up]:value,
         list:this.data.list
@@ -96,7 +91,7 @@ Page({
       console.log(that.data.list)
     },
     onInput(e) {
-      this.data.inputData = e.detail.value
+      this.data.value = e.detail.value
       this.triggerEvent('input', e.detail.value, {})
     },
     onCancel() {

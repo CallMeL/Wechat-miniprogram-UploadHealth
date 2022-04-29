@@ -39,6 +39,9 @@
 
 
 .wxSearchMindKeyItem{
+  height: 150rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
   padding: 10px 5px;
   border-bottom: 1px solid #eee;
   display: flex;
@@ -47,6 +50,7 @@
 }
 
 .wxSearchKeyList{
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
