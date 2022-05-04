@@ -1,5 +1,4 @@
-// pages/home/addFood/addFood.js
-import HomeModel from '../../../models/home'
+
 import { showToast } from '../../../utils/UIUtil'
 const globalEnv = getApp()
 Page({

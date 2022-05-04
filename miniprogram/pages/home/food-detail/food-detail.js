@@ -3,7 +3,8 @@ import { showToast } from '../../../utils/UIUtil'
 const globalEnv = getApp()
 Page({ 
   data: {
-    fromSearch:false,//false: direct from search Page, true: direct from home Page
+    Q:null,
+    fromSearch:null,//false: direct from search Page, true: direct from home Page
     temp:[],
     isShow_03: false,listData:[['1', '2','3', '4','5'],['0','1/2','1/4'],['每单位']],picker_03_data:[],
     unit : null,
@@ -14,10 +15,12 @@ Page({
   onLoad: function (options) {
     var that=this
     var queryBean = JSON.parse(options.queryBean);
+    this.data.Q = JSON.parse(options.queryBean),
     console.log('from Search?'+options.fromSearch)
-    if(options.fromSearch==true){
+    console.log(queryBean)
+    if(options.fromSearch==1){
       console.log('in true')
-      that.setData({
+      that.setData({   
         fromSearch:options.fromSearch,
         food: queryBean,
         foodName:queryBean.name,
@@ -36,7 +39,7 @@ Page({
       })
       this.getFoodById()
     }
-    console.log(this.data)
+    //console.log(this.data)
 
   },
   getFoodById:function(){
@@ -47,9 +50,9 @@ Page({
         source:this.data.source
       },
       success: res => {
-        console.log('done!')
-        console.log('get food')
-        console.log(res.result)
+        console.log('get foodbyID done!')
+        console.log(this.data.foodId)
+        console.log(res)
         this.setData({
           foodDetail:res.result.data[0].detail,
           foodName:res.result.data[0].name,
@@ -102,25 +105,28 @@ Page({
     })
   },
   sureCallBack_03 (e) {
-    let data = e.detail
     this.setData({
       isShow_03: false,
       picker_03_data: e.detail.choosedData,
       picker_03_index:JSON.stringify(e.detail.choosedIndexArr)
     })
     var num1 = parseInt(this.data.picker_03_data[0])
-    var num2 = this.data.picker_03_data[1].replace("/","")
-    num2 = parseInt(num2[1])
+    if(this.data.picker_03_data[1]==0){
+      var num2 = 0
+    }else{
+      var num2 = this.data.picker_03_data[1].replace("/","")
+    }      
     if(num2!=0){
+      num2 = parseInt(num2[1])
       var sum = Number(num1+(1/num2))
     }else{
       var sum = Number(num1)
     }
     for (let index = 0; index < this.data.foodDetail.length; index++) {
       var up ='foodDetail['+index+'].value'
-      var num = this.data.foodDetail[index].value
+      //console.log(num)
       this.setData({
-        [up] : (num * sum).toFixed(2),
+        [up] : (this.data.Q.detail[index].value * sum).toFixed(2),
         foodDetail:this.data.foodDetail
       })
     }
