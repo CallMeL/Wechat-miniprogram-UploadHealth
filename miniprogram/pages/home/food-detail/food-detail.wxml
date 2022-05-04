@@ -1,20 +1,30 @@
+<!-- <view class="top">
+	<view class="inform-group">
+		<text>名称：{{foodName}}</text>
+	</view>
+	<view class="btn-group">
+		<view class="edit" bind:tap="showPicker_03">修改添加份量</view>
+		<view class="add" bind:tap="addFoodRecord">添加食物到我的</view>
+	</view>
+</view> -->
 <view>
-	<button bindtap="addFoodRecord">添加食物到我的</button>
-	<text>食物名称：{{foodName}}</text>
-	<view class = "Detail-Container" wx:for="{{foodDetail}}"> {{item.name}}:{{item.value}}{{item.unit}}</view>
-	<button bindtap="showPicker_03">选择添加份量</button>
-<text>份量：{{howmany}}</text>
+	<view class="header">
+		<view class="goal-title">{{foodName}}</view>
+		<view class="button-group">
+
+			<image mode="aspectFit" bind:tap="showPicker_03" class="edit" src="../../../images/home/details/edit.png"></image>
+		<image mode="aspectFit" bind:tap="addFoodRecord" class="add" src="../../../images/home/details/remove.png"></image>
+
+		</view>
+
+</view>
+
+
+	<text>份量：{{howmany}}</text>
+	<view class="Detail-Container" wx:for="{{foodDetail}}"> {{item.name}}:{{item.value}}{{item.unit}}</view>
+
 </view>
 
 <view>选择数据：{{picker_03_data}}</view>
 <view>选择索引：{{picker_03_index}}</view>
-<picker
-	isShowPicker="{{isShow_03}}"
-	bindsure="sureCallBack_03"
-	bindcancle="cancleCallBack_03"
-	scrollType="normal"
-  indicatorStyle="height:40%"
-  titleText="选择份量"
-	listData="{{listData}}"
-></picker>
-
+<picker isShowPicker="{{isShow_03}}" bindsure="sureCallBack_03" bindcancle="cancleCallBack_03" scrollType="normal" indicatorStyle="height:40%" titleText="选择份量" listData="{{listData}}"></picker>

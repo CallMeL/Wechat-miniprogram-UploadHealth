@@ -164,7 +164,7 @@ Page({
   onFoodClick(e) {
     var queryBean = JSON.stringify(e.currentTarget.dataset.inform)
     wx.navigateTo({
-      url: './food-detail/food-detail?queryBean='+ queryBean+"&fromSearch="+false
+      url: './food-detail/food-detail?queryBean='+ queryBean+"&fromSearch="+0
     })
   },
 

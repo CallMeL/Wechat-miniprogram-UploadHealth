@@ -1,1 +1,35 @@
 /* pages/home/food-detail/food-detail.wxss */
+.header {
+  display: flex;
+  margin: 24rpx 40rpx;
+  align-items: center;
+}
+.goal-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  line-height: 48rpx;
+  min-height: 48rpx;
+  vertical-align: text-top;
+}
+.button-group {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-right: 5%;
+  
+}
+
+.button-group .edit {
+  width: 44rpx;
+  height: 44rpx;
+  padding-left: 50rpx;
+}
+
+.button-group .add {
+  width: 40rpx;
+  height: 40rpx;
+  padding-left: 50rpx;
+}

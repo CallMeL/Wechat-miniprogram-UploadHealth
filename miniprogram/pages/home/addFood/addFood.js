@@ -95,7 +95,7 @@ Page({
     // }
     var queryBean = JSON.stringify(this.data.nowAddingFood)
     wx.navigateTo({
-      url: '../../home/food-detail/food-detail?queryBean='+ queryBean+ "&list=" + list+ "&source=" + this.data.activeTab+'&fromSearch='+true,
+      url: '../../home/food-detail/food-detail?queryBean='+ queryBean+ "&list=" + list+ "&source=" + this.data.activeTab+'&fromSearch='+1,
     })
   }
   
