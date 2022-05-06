@@ -1,8 +1,78 @@
 /* pages/home/food-detail/food-detail.wxss */
+.belong{
+  margin: 5%;
+}
+.parameter-wrap{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
+}
+.unchecked_parameter{
+  flex:1;
+  padding: 3px;
+}
+.checked_parameter{
+  flex:1;
+  background: rebeccapurple;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
+  padding: 3px;
+  border-radius: 5px;
+  color: #fff;
+}
+.add_btn{
+  width: 100%;
+  position: fixed;
+  bottom: 30rpx;
+}
+.btn{
+  margin-top: 30rpx;
+  width: 450rpx;
+  background: #14a1fd;
+  color: #fff;
+  border-radius: 70rpx;
+}
+
+.top-3{
+  display: flex;
+  flex-direction: row;
+}
+.top-item{
+  flex:1;
+  background-color: #fdd835;
+  border-radius: 18rpx;
+  margin: 10rpx;
+  height:50px;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
+}
+.item-text{
+  margin: auto;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: rgb(78, 78, 78);
+  text-align: center;
+}
+.Detail-Container{
+  margin: 5%;
+}
+.open-close{
+  text-align: center;
+}
+.line{
+  padding: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .header {
   display: flex;
   margin: 24rpx 40rpx;
   align-items: center;
+}
+.right>image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 30rpx;
 }
 .goal-title {
   font-size: 44rpx;
@@ -10,26 +80,59 @@
   line-height: 48rpx;
   min-height: 48rpx;
   vertical-align: text-top;
+  text-align: center;
+}
+.left{
+  margin-left: auto;
+  justify-content: flex-end;
+}
+.fenliang{
+  font-weight: bold;
+  line-height: 48rpx;
+  min-height: 48rpx;
+  text-align: right;
 }
 .button-group {
-  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+.button-group .edit {
+  width: 50rpx;
+  height: 50rpx;
+}
+.button-group .delet { 
+  width: 50rpx;
+  height: 50rpx;
+  padding-left: 50rpx;
+}
+.tips-container {
+  margin: 0 40rpx;
+  background-color: #f5efd4;
+  font-size: 28rpx;
+  border-radius: 18rpx;
+  padding: 20rpx 24rpx;
+  color: #555;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  /* animation: ani 2s infinite ease-in-out; */
+}
+
+.tips-container > .info > .warn {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.tips-container > .info > .tips {
+  font-size: 30rpx;
   font-weight: bold;
-  font-size: 28rpx;
-  margin-right: 5%;
-  
+  color: #000;
+  margin-top: 2rpx;
+}
+.tips-container > image {
+  width: 56rpx;
+  height: 56rpx;
+  margin-right: 32rpx;
+  align-self: flex-start;
 }
 
-.button-group .edit {
-  width: 44rpx;
-  height: 44rpx;
-  padding-left: 50rpx;
-}
-
-.button-group .add {
-  width: 40rpx;
-  height: 40rpx;
-  padding-left: 50rpx;
-}

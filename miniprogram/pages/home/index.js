@@ -35,9 +35,7 @@ Page({
      },
     })
   },
-  loadFoodInfom:function(){
-    
-  },
+
   onLoad() {
     this.initUserInfo()  
   },
@@ -53,8 +51,6 @@ Page({
       })
       .then(() => { 
         this.getTodayFoodList()
-        //this.loadFoodInfom()
-        
       })
   },
 

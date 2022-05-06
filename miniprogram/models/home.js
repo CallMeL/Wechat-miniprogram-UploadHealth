@@ -22,7 +22,12 @@ export default class HomeModel {
       })
     })
   }
-
+  static removeRecord(recordId) {
+    return wx.cloud.callFunction({
+      name: 'removeRecord',
+      data: { recordId }
+    })
+  }
   static getOpenIdAndUserId() {
     return wx.cloud.callFunction({
       name: 'login',

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "picker":"../../../components/picker/picker"
+    "picker":"../../../components/picker/picker",
+    "m-tips": "../../../components/tips/index"
   }
 }

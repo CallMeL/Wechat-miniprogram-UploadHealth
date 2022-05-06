@@ -48,10 +48,6 @@
   <m-loading />
 </view>
 <m-tips warn="Hi，今天还没有记录食物呢" tips="点击右下角的 “+” 开始吧！" wx:else></m-tips>
-<!-- 创建按钮 
-<image class="create" src="../../images/home/create.png" bind:tap="onCreateGoal" />
-</view>
--->
 <image class="create" src="../../images/home/create-btn.png" bind:tap="JumpToAddFoodPage" />
 </view>
 
