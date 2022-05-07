@@ -13,20 +13,7 @@
 
 <!-- 饼状图 -->
 <view class="pie-container">
-  <image class="empty-img" wx:if="{{goalList.length === 0 || !goalList}}" mode="aspectFit" src="../../images/home/empty.png" bind:tap="onCreateGoal" />
-  <view class="pie" hidden="{{isCreating}}">
-    <ec-canvas ec="{{ pieOpt }}" id="chart"></ec-canvas>
-  </view>
-</view>
-<!-- 当前记录提示 -->
-<view class="timer-tips" wx:if="{{timerState}}" bind:tap="onJumpToTimerPage">
-  <view class="timer-detail">
-    当前
-    <view class="timer-goal-title">{{timerGoalTitle}}</view>
-    {{timerState}}
-    <view class="check-timer">查看</view>
-  </view>
-  <view class="timer">{{timer}}</view>
+  <image class="empty-img"/>
 </view>
 <!-- 今日添加食物信息 -->
 <view class="project-container" wx:if="{{foodList.length}}">
@@ -39,7 +26,8 @@
     <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}">
       <view class="title">{{item.foodName}}</view>
       <view class="tags">
-        <m-tag>{{item.howmany}}</m-tag>
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
       </view>
     </view>
   </view>

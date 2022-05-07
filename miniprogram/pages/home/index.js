@@ -28,6 +28,17 @@ Page({
         this.setData({
           foodList: res.result.data
         })
+        for (let index = 0; index < this.data.foodList.length; index++) {
+          var up ='foodList['+index+'].Date'
+          var time = new Date(this.data.foodList[index].Date)
+          var hour = time.getHours()
+          var min = time.getMinutes()
+          //console.log(num)
+          this.setData({
+            [up] : (hour+':'+min),
+            foodDetail:this.data.foodDetail
+          })
+        }
         console.log(this.data.foodList)
       },
       fail: res => {
@@ -62,32 +73,13 @@ Page({
     }
   },
 
-  onReady() {
-    const $chart = this.selectComponent('#chart')
-    $chart.init((canvas, width, height) => {
-      const chart = echarts.init(canvas, null, {
-        width,
-        height
-      })
-      canvas.setChart(chart)
-      this.pie = chart
-      this.data.isPieInited = true
-      if (this.data.isDataLoaded) {
-        this.updatePieOption()
-      }
-      return chart
-    })
-  },
+
   onShareAppMessage() {
     return {
       title: '我在用 UploadHealth 来记录饮食'
     }
   },
-  onCancelCreate() {
-    this.setData({
-      isCreating: false
-    })
-  },
+
 
   JumpToAddFoodPage(){
     if (!this.data.userInfo) {
