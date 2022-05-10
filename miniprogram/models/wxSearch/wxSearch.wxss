@@ -1,3 +1,16 @@
+
+.project {
+  margin: 0 40rpx;
+  padding: 24rpx;
+  border-radius: 18rpx;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
+}
+
+.project > .title {
+  font-size: 32rpx;
+}
+
+
 .wxSearch{
   position: absolute;
   top: 43px;
@@ -38,23 +51,6 @@
 }
 
 
-.wxSearchMindKeyItem{
-  height: 150rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  padding: 10px 5px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  font-size: 14px;
-  color: cornflowerblue;
-}
-
-.wxSearchKeyList{
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 
 .wxSearchKeyItem{
   flex: 0 0 20%;

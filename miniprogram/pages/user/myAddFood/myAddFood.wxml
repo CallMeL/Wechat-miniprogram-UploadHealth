@@ -2,7 +2,11 @@
 <view class="project-container" wx:if="{{foodList.length}}">
 
   <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onFoodClick" data-goal-id="{{item._id}}">
-      <view class="title">{{item.foodname}}</view>
+      <view class="title">{{item.name}}</view>
+      <m-tag>{{item.detail[0].name}}：{{item.detail[0].value}}</m-tag>
+      <m-tag>{{item.detail[1].name}}：{{item.detail[1].value}}</m-tag>
+      <m-tag>{{item.detail[2].name}}：{{item.detail[2].value}}</m-tag>
+      <m-tag>{{item.detail[3].name}}：{{item.detail[3].value}}</m-tag>
 </view>
 
 </view>

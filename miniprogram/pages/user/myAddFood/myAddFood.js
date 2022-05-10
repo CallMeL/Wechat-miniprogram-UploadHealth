@@ -27,6 +27,7 @@ getFoodList(){
         foodList: res.result.data
       })
       console.log(this.data.userId)
+      console.log(this.data.foodList)
       
     })
   
