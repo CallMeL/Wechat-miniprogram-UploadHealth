@@ -5,6 +5,7 @@ import HomeModel from '../../models/home'
 const globalEnv = getApp()
 Page({
   data: {
+    BF:false,LC:false,DN:false,SN:false,
     pieOpt: {},
     hasCreateUser:false,
     userId:null,
@@ -29,6 +30,7 @@ Page({
           foodList: res.result.data
         })
         for (let index = 0; index < this.data.foodList.length; index++) {
+
           var up ='foodList['+index+'].Date'
           var time = new Date(this.data.foodList[index].Date)
           var hour = time.getHours()
@@ -38,7 +40,23 @@ Page({
             [up] : (hour+':'+min),
             foodDetail:this.data.foodDetail
           })
+          //BF:false,LC:false,DN:false,SN:false,
+          if (this.data.foodList[index].belongsto=='早餐'){
+            this.setData({BF:true})
+          }
+         
+          if (this.data.foodList[index].belongsto=='午餐'){
+            this.setData({LC:true})
+          }
+          if (this.data.foodList[index].belongsto=='晚餐'){
+            this.setData({DN:true})
+          }
+          if (this.data.foodList[index].belongsto=='零食'){
+            this.setData({SN:true})
+          }
+          
         }
+        console.log(this.data.SN)
         console.log(this.data.foodList)
       },
       fail: res => {

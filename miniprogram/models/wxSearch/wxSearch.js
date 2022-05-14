@@ -132,6 +132,7 @@ function wxSearchKeyTap(e, that, callBack) {
       })
 }
 function wxSearchOnAddFood(e,that){
+  console.log(e.target.dataset)
     that.setData({
         isAdding: true,
         nowAddingFood:e.target.dataset.key

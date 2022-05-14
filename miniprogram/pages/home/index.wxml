@@ -23,15 +23,49 @@
     个食物：
   </view>
   <view>
-    <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}">
+  <!-- 零食 -->
+  <view class="catgory" wx:if="{{SN==true}}">零食</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='零食'}}">
       <view class="title">{{item.foodName}}</view>
       <view class="tags">
         <m-tag>份量：{{item.howmany}}</m-tag>
         <m-tag>添加时间：{{item.Date}}</m-tag>
-      </view>
+      </view>  
+    </view>
+  <!-- 晚餐 -->
+  <view class="catgory" wx:if="{{DN==true}}">晚餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='晚餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+    </view>
+  <!-- 午餐 -->
+    <view class="catgory" wx:if="{{LC==true}}">午餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='午餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+
+
+    </view>
+<!-- 早餐 -->
+<view class="catgory" wx:if="{{BF==true}}">早餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='早餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+
+
     </view>
   </view>
 </view>
+
 <view class="loading" wx:elif="{{!foodList}}">
   <m-loading />
 </view>

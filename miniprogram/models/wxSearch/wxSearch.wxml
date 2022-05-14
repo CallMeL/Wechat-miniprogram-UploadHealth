@@ -1,39 +1,42 @@
 <template name="wxSearch">
-  <view class="wxSearch" bindtap="wxSearchTap" style="display:{{wxSearchData.view.isShow ? 'block':'none'}};height:{{wxSearchData.view.seachHeight}}px;top:{{wxSearchData.view.barHeight}}px;">
-    <view class="wxSearchInner">
+  <view class="wxSearch" bindtap="wxSearchTap"  style="display:{{wxSearchData.view.isShow ? 'block':'none'}};height:{{wxSearchData.view.seachHeight}}px;top:{{wxSearchData.view.barHeight}}px;">
+    <view  class="wxSearchInner">
 
-      <view class="wxSearchMindKey">
-        <view class="wxSearchMindKeyList">
-          <block wx:for="{{wxSearchData.mindKeys}}">
-            <view class="project" bindtap="wxSearchOnAddFood" data-key="{{item}}">
-              <view class="title">{{item.name}}</view>
+        <view class="wxSearchMindKey">
+            <view class="wxSearchMindKeyList">
+                <block wx:for="{{wxSearchData.mindKeys}}">
+                    <view class="wxSearchMindKeyItem" bindtap="wxSearchOnAddFood" data-key="{{item}}">
+                    <image bindtap="wxSearchOnAddFood" data-key="{{item}}"class="image"src="{{item.src}}"></image>
+                    <view bindtap="wxSearchOnAddFood" data-key="{{item}}" class="title">{{item.name}}
+                      <view class="tag">脂肪:{{item.fat}}碳水:{{item.cho}}卡路里:{{item.kcal}}</view>
+                    </view>
+                    
+                    <!-- <view>
+                      <view class="title">{{item.name}}</view>
+                     <view class="tag">脂肪:{{item.fat}}碳水:{{item.cho}}卡路里:{{item.kcal}}</view>
+                    </view>      -->
+                    </view>
+    
+                </block>
+                <button bindtap="loadmore" style="display:{{wxSearchData.view.isShowSearchHistory? 'none':''}}">more</button>             
             </view>
-            <!-- <view class="wxSearchMindKeyItem" bindtap="wxSearchOnAddFood" data-key="{{item}}">
-              <text class="left">{{item.name}}</text>
-              <view wx:for="{{item.ratio}}" wx:for-index="key" wx:for-item="value">
-                {{value}}
-              </view>
-            </view> -->
-          </block>
-          <button bindtap="loadmore" style="display:{{wxSearchData.view.isShowSearchHistory? 'none':''}}">more</button>
         </view>
-      </view>
 
-      <view class="wxSearchHistory" style="display:{{wxSearchData.view.isShowSearchHistory ? 'block':'none'}}">
-        <text class="wxSearchTitle">搜索历史</text>
-        <view wx:if="{{wxSearchData.his[0]}}" class="wxSearchHistoryList">
-          <block wx:for="{{wxSearchData.his}}">
-            <view class="wxSearchHistoryItem">
-              <text class="wxSearchHistoryItemText" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</text>
-              <text class="wxSearchHistoryItemDel" bindtap="wxSearchDeleteKey" data-key="{{item}}" data-key="{{item}}">删除</text>
+        <view class="wxSearchHistory" style="display:{{wxSearchData.view.isShowSearchHistory ? 'block':'none'}}">
+            <text class="wxSearchTitle">搜索历史</text>
+            <view wx:if="{{wxSearchData.his[0]}}" class="wxSearchHistoryList">
+                <block wx:for="{{wxSearchData.his}}">
+                    <view class="wxSearchHistoryItem">
+                        <text class="wxSearchHistoryItemText" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</text> 
+                        <text class="wxSearchHistoryItemDel" bindtap="wxSearchDeleteKey" data-key="{{item}}" data-key="{{item}}">删除</text>
+                    </view>
+                </block>
+                <view class="wxSearchDeleteAllBtn" bindtap="wxSearchDeleteAll">清除历史</view>
             </view>
-          </block>
-          <view class="wxSearchDeleteAllBtn" bindtap="wxSearchDeleteAll">清除历史</view>
+            <view wx:else>
+                <view class="wxSearchHistoryEmpty">搜索历史为空</view>
+            </view>
         </view>
-        <view wx:else>
-          <view class="wxSearchHistoryEmpty">搜索历史为空</view>
-        </view>
-      </view>
     </view>
   </view>
 </template>

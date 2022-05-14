@@ -1,15 +1,4 @@
 
-.project {
-  margin: 0 40rpx;
-  padding: 24rpx;
-  border-radius: 18rpx;
-  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
-}
-
-.project > .title {
-  font-size: 32rpx;
-}
-
 
 .wxSearch{
   position: absolute;
@@ -24,9 +13,8 @@
   background-color: #fff;
 }
 .wxSearch-section{
-  background-color: #fff;
+  background-color:rgb(140, 180, 255);
   padding: 5px 10px;
-  border: 1px #eee solid;
 }
 .wxSearch-pancel{
   display: flex;
@@ -34,13 +22,19 @@
 }
 .wxSearch-input{
   flex: 8; 
-  background-color: #eee;
+  background-color: rgb(255, 255, 255);
   padding: 5px 10px;
+  border-radius: 15rpx;
+  box-shadow: 10rpx 10rpx 10rpx 10rpx rgba(25, 118, 210, 0.1);
 }
 .wxSearch-button{
   flex: 1;
-  border: none !important;
-  color: cornflowerblue !important;
+  /* color: rgb(140, 180, 255) !important; */
+  color: white;
+  margin-left: 30rpx;
+  background-color: rgb(140, 180, 255);
+  border: 1rpx #eee solid;
+  box-shadow: 5rpx 10rpx 10rpx 10rpx rgba(31, 65, 102, 0.1);
 }
 
 .wxSearchTitle{
@@ -51,6 +45,38 @@
 }
 
 
+.wxSearchMindKeyItem{
+  height: 100rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-bottom: 10rpx;
+  /* border-bottom: 1px solid #eee; */
+  font-size: 14px;
+  display: block;
+  border-radius: 5rpx;
+}
+.image{
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 10rpx;
+  box-shadow: 1rpx 6rpx 16rpx rgba(25, 118, 210, 0.1);
+}
+.title{
+  display: inline;
+  width: 100%;
+  position: absolute;
+  margin: 20rpx;
+}
+.tag {
+  font-size: 24rpx;
+  color: rgb(185, 185, 185);
+}
+.wxSearchKeyList{
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 .wxSearchKeyItem{
   flex: 0 0 20%;

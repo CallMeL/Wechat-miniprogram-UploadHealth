@@ -1,3 +1,9 @@
+.catgory{
+  color: #555;
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
 .blur-bg {
   filter: blur(10rpx);
   overflow: hidden;
@@ -78,13 +84,13 @@
   margin-bottom: 200rpx;
 }
 
-.project-container > .count {
+ .count {
   color: #555;
   font-weight: bold;
   font-size: 28rpx;
 }
 
-.project-container > .count > .num {
+ .num {
   display: inline-block;
   margin: 0 4rpx;
   color: #1976d2;
