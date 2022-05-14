@@ -1,76 +1,66 @@
+// pages/test/test.js
 Page({
-  onReachBottom: function () {
-    wx.showLoading({
-      title: '加载中',
-    })
-    var that = this;
-    var array = that.data.food;
-    var name = '';
-    if(that.data.TabCur == 0){
-      name = 'zaoCan'
-    }else if(that.data.TabCur == 1){
-      name = 'wuCan'
-    }else if(that.data.TabCur == 2){
-      name = 'wanCan'
-    }
-    if(that.data.value == ''){
-      db.collection(name).skip(array.length).get({
-        success(res){
-          if(res.data.length !== 0){
-            for(var i = 0; i < res.data.length; i++){
-              array.push(res.data[i]);
-            }
-            console.log(array);
-            that.setData({
-              food:array
-            })
-            wx.hideLoading({
-              success: (res) => {
-                wx.showToast({
-                  title: '加载成功',
-                })
-              },
-            })
-          }else {
-            wx.showToast({
-              icon:'none',
-              title: '无更多菜谱',
-            })
-          }
-        }
-      })
-    }else {
-      db.collection(name).skip(array.length).where({
-        name:db.RegExp({
-          regexp:that.data.value,
-          options:'i'
-        })
-      }).get({
-        success(res){
-          if(res.data.length !== 0){
-            console.log(res.data);
-            for(var i = 0; i < res.data.length; i++){
-              array.push(res.data[i]);
-            }
-            console.log(array);
-            that.setData({
-              food:array
-            })
-            wx.hideLoading({
-              success: (res) => {
-                wx.showToast({
-                  title: '加载成功',
-                })
-              },
-            })
-          }else {
-            wx.showToast({
-              icon:'none',
-              title: '无更多信息',
-            })
-          }
-        }
-      })
-    }
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  }
 })

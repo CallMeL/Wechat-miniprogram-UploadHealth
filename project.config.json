@@ -21,14 +21,12 @@
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
     "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "useIsolateContext": false,
+    "useIsolateContext": true,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
@@ -37,51 +35,24 @@
     "minifyWXML": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "useStaticServer": true
   },
-  "appid": "wxef9607207847cf77",
-  "projectname": "chronus-master",
-  "libVersion": "2.8.3",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-  "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "id": 0,
-          "name": "detail",
-          "pathName": "pages/detail/index",
-          "query": "id=XIzKrcDR1TiN7x3C",
-          "scene": null
-        },
-        {
-          "id": 1,
-          "name": "timer",
-          "pathName": "pages/timer/index",
-          "query": "title=HelloWorld",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "summary",
-          "pathName": "pages/summary/index",
-          "query": "",
-          "scene": null
-        }
-      ]
-    }
-  }
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "condition": {},
+  "compileType": "miniprogram",
+  "srcMiniprogramRoot": "miniprogram/",
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "libVersion": "2.24.1",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "appid": "wxef9607207847cf77"
 }

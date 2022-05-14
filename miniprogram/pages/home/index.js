@@ -5,6 +5,7 @@ import HomeModel from '../../models/home'
 const globalEnv = getApp()
 Page({
   data: {
+    BF:false,LC:false,DN:false,SN:false,
     pieOpt: {},
     hasCreateUser:false,
     userId:null,
@@ -28,6 +29,34 @@ Page({
         this.setData({
           foodList: res.result.data
         })
+        for (let index = 0; index < this.data.foodList.length; index++) {
+
+          var up ='foodList['+index+'].Date'
+          var time = new Date(this.data.foodList[index].Date)
+          var hour = time.getHours()
+          var min = time.getMinutes()
+          //console.log(num)
+          this.setData({
+            [up] : (hour+':'+min),
+            foodDetail:this.data.foodDetail
+          })
+          //BF:false,LC:false,DN:false,SN:false,
+          if (this.data.foodList[index].belongsto=='早餐'){
+            this.setData({BF:true})
+          }
+         
+          if (this.data.foodList[index].belongsto=='午餐'){
+            this.setData({LC:true})
+          }
+          if (this.data.foodList[index].belongsto=='晚餐'){
+            this.setData({DN:true})
+          }
+          if (this.data.foodList[index].belongsto=='零食'){
+            this.setData({SN:true})
+          }
+          
+        }
+        console.log(this.data.SN)
         console.log(this.data.foodList)
       },
       fail: res => {
@@ -35,9 +64,7 @@ Page({
      },
     })
   },
-  loadFoodInfom:function(){
-    
-  },
+
   onLoad() {
     this.initUserInfo()  
   },
@@ -53,8 +80,6 @@ Page({
       })
       .then(() => { 
         this.getTodayFoodList()
-        //this.loadFoodInfom()
-        
       })
   },
 
@@ -66,32 +91,13 @@ Page({
     }
   },
 
-  onReady() {
-    const $chart = this.selectComponent('#chart')
-    $chart.init((canvas, width, height) => {
-      const chart = echarts.init(canvas, null, {
-        width,
-        height
-      })
-      canvas.setChart(chart)
-      this.pie = chart
-      this.data.isPieInited = true
-      if (this.data.isDataLoaded) {
-        this.updatePieOption()
-      }
-      return chart
-    })
-  },
+
   onShareAppMessage() {
     return {
       title: '我在用 UploadHealth 来记录饮食'
     }
   },
-  onCancelCreate() {
-    this.setData({
-      isCreating: false
-    })
-  },
+
 
   JumpToAddFoodPage(){
     if (!this.data.userInfo) {

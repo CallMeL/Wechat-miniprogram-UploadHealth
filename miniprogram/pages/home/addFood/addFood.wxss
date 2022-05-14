@@ -28,25 +28,26 @@ margin-top: 10%;
   perspective: 1000;
 }
 .stv-container .tab-bar {
-  margin-top: 1%;
   height: 5%;
   position: relative;
   display: flex;
   font-size: 30rpx;
-  color: #666666;
+  color: white;
 }
 .stv-container .tab-bar .tab-active {
-  color: #2d80ff;
+  color: white;
 }
 .stv-container .tab-bar .tab {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-bottom: 20rpx;
+  background-color: rgb(140, 180, 255);
 }
 .stv-container .tab-bar .under-line {
   position: absolute;
   bottom: 0;
   height: 6rpx;
-  background-color: #2d80ff;
+  background-color: white;
+  box-shadow: 5rpx 10rpx 10rpx 10rpx rgba(31, 65, 102, 0.1);
 }

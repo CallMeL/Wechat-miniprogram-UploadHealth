@@ -13,20 +13,7 @@
 
 <!-- 饼状图 -->
 <view class="pie-container">
-  <image class="empty-img" wx:if="{{goalList.length === 0 || !goalList}}" mode="aspectFit" src="../../images/home/empty.png" bind:tap="onCreateGoal" />
-  <view class="pie" hidden="{{isCreating}}">
-    <ec-canvas ec="{{ pieOpt }}" id="chart"></ec-canvas>
-  </view>
-</view>
-<!-- 当前记录提示 -->
-<view class="timer-tips" wx:if="{{timerState}}" bind:tap="onJumpToTimerPage">
-  <view class="timer-detail">
-    当前
-    <view class="timer-goal-title">{{timerGoalTitle}}</view>
-    {{timerState}}
-    <view class="check-timer">查看</view>
-  </view>
-  <view class="timer">{{timer}}</view>
+  <image class="empty-img"/>
 </view>
 <!-- 今日添加食物信息 -->
 <view class="project-container" wx:if="{{foodList.length}}">
@@ -36,22 +23,53 @@
     个食物：
   </view>
   <view>
-    <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}">
+  <!-- 零食 -->
+  <view class="catgory" wx:if="{{SN==true}}">零食</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='零食'}}">
       <view class="title">{{item.foodName}}</view>
       <view class="tags">
-        <m-tag>{{item.howmany}}</m-tag>
-      </view>
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+    </view>
+  <!-- 晚餐 -->
+  <view class="catgory" wx:if="{{DN==true}}">晚餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='晚餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+    </view>
+  <!-- 午餐 -->
+    <view class="catgory" wx:if="{{LC==true}}">午餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='午餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+
+
+    </view>
+<!-- 早餐 -->
+<view class="catgory" wx:if="{{BF==true}}">早餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='早餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+
+
     </view>
   </view>
 </view>
+
 <view class="loading" wx:elif="{{!foodList}}">
   <m-loading />
 </view>
 <m-tips warn="Hi，今天还没有记录食物呢" tips="点击右下角的 “+” 开始吧！" wx:else></m-tips>
-<!-- 创建按钮 
-<image class="create" src="../../images/home/create.png" bind:tap="onCreateGoal" />
-</view>
--->
 <image class="create" src="../../images/home/create-btn.png" bind:tap="JumpToAddFoodPage" />
 </view>
 

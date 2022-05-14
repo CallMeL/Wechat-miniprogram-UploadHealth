@@ -1,30 +1,72 @@
-<!-- <view class="top">
-	<view class="inform-group">
-		<text>名称：{{foodName}}</text>
-	</view>
-	<view class="btn-group">
-		<view class="edit" bind:tap="showPicker_03">修改添加份量</view>
-		<view class="add" bind:tap="addFoodRecord">添加食物到我的</view>
-	</view>
-</view> -->
-<view>
-	<view class="header">
-		<view class="goal-title">{{foodName}}</view>
-		<view class="button-group">
+<!--顶部信息-->
+<view class="header">
+  <view class="right">
+    <image src="{{photo}}"></image>
+  </view>
+  <view class="left">
+    <view class="goal-title">{{foodName}} </view>
+    <view class="button-group">
+      <image mode="aspectFit" bind:tap="showPicker_03" class="edit" src="../../../images/home/details/edit.png"></image>
+      <image mode="aspectFit" bind:tap="deletFoodRecord" class="delet" src="../../../images/home/details/delete.png"></image>     
+    </view>
+    <view class="fenliang">份量：{{howmany}}</view>
+  </view>
+</view>
+<!--选择餐类-->
+<view class="belong">
+  <view class='parameter-wrap'>
+    <block wx:for="{{parameter}}" wx:key="parameter">
+    <text class='parameter-info text-over {{item.checked?"checked_parameter":"unchecked_parameter"}}' data-id='{{item.id}}' bindtap='parameterTap'>{{item.name}}</text>
+    </block>
+  </view>
+</view>
 
-			<image mode="aspectFit" bind:tap="showPicker_03" class="edit" src="../../../images/home/details/edit.png"></image>
-		<image mode="aspectFit" bind:tap="addFoodRecord" class="add" src="../../../images/home/details/remove.png"></image>
 
-		</view>
+
+<!--贴士-->
+<view class="tips-container">
+  <!-- <image src="./images/nav.png" /> -->
+  <view class="info">
+    <view class="warn"></view>
+    <view class="tips">{{food.tip}}</view>
+  </view>
+</view>
+
+<view class="Detail-Container">
+  <view class="top-3">
+    <view class="top-item" style="flex:1;height:100px;" wx:for="{{foodDetail}}" wx:for-index="idx" wx:if="{{idx<3}}">
+      <view class="item-text">
+        <view>{{item.name}}</view>
+        <view> {{item.value}}{{item.unit}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="line" wx:for="{{foodDetail}}" wx:for-index="idx" wx:if="{{idx > 2 && idx<8}}">
+  
+    <view style="text-align:left;">{{item.name}}</view>
+    <view style="text-align:right;"> {{item.value}}{{item.unit}}</view>
+  </view>
+  <view class="open-close">
+        <text bindtap="show">{{showmore? '收起其他元素︿' : '展开更多元素﹀'}}</text>
+  </view>
+
+  <view hidden="{{!showmore}}" class="line"wx:for="{{foodDetail}}" wx:for-index="idx" wx:if="{{idx > 7}}">
+  <view style="text-align:left;">{{item.name}}</view>
+  <view style="text-align:right;"> {{item.value}}{{item.unit}}</view>
+</view>
+<view class='add_btn' bind:tap="addFoodRecord" >
+    <button class='btn'>
+      {{fromSearch? '添加' : '再次添加'}}
+    </button>
+</view>
 
 </view>
 
 
-	<text>份量：{{howmany}}</text>
-	<view class="Detail-Container" wx:for="{{foodDetail}}"> {{item.name}}:{{item.value}}{{item.unit}}</view>
 
-</view>
+<picker isShowPicker="{{isShow_03}}" bindsure="sureCallBack_03" bindcancle="cancleCallBack_03" scrollType="normal" indicatorStyle="height:40%" titleText="选择份量" listData="{{listData}}"></picker> 
 
-<view>选择数据：{{picker_03_data}}</view>
+
+<!-- <view>选择数据：{{picker_03_data}}</view>
 <view>选择索引：{{picker_03_index}}</view>
-<picker isShowPicker="{{isShow_03}}" bindsure="sureCallBack_03" bindcancle="cancleCallBack_03" scrollType="normal" indicatorStyle="height:40%" titleText="选择份量" listData="{{listData}}"></picker>
+-->

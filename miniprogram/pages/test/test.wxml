@@ -1,5 +1,2 @@
-<view style="height:100px" wx:for='{{list}}' wx:key='none'>{{index}}</view>
-<view style="padding:15px;text-align:center;color:grey" wx:if='{ {list.length>limit}}'>
-  <view wx:if='{{(!isEndOfList)}}'>正在加载数据...</view>
-  <view wx:else>----END----</view>
-</view>
+<!--pages/test/test.wxml-->
+<text>pages/test/test.wxml</text>
