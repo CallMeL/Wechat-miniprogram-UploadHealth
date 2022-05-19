@@ -103,7 +103,16 @@ Page({
       url: `../user/addFood/addFood?id=${this.data.userId}`
     })
   },
-  jumptoMyAddFood(){
+  jumptoMyAddFood(){  
+    if (!this.data.userInfo) {
+      showToast('请先授权登录')
+      return
+    }
+    wx.navigateTo({
+      url: `../user/myAddFood/myAddFood?id=${this.data.userId}`
+    })
+  },
+  jumptoAdvice(){
     //this.getFoodList()
     if (!this.data.userInfo) {
       showToast('请先授权登录')
@@ -111,7 +120,8 @@ Page({
     }
     //console.log(this.data.userId)
     wx.navigateTo({
-      url: `../user/myAddFood/myAddFood?id=${this.data.userId}`
+      url: `../user/advice/index?id=${this.data.userId}`
     })
   },
+
 })

@@ -1,7 +1,10 @@
 <!--顶部信息-->
 <view class="header">
-  <view class="right">
+  <view class="right" wx:if="{{photo}}">
     <image src="{{photo}}"></image>
+  </view>
+  <view class="right" wx:if="{{!photo}}">
+    <image src="../../../images/home/details/nofood.39.47.png"></image>
   </view>
   <view class="left">
     <view class="goal-title">{{foodName}} </view>
@@ -24,7 +27,7 @@
 
 
 <!--贴士-->
-<view class="tips-container">
+<view class="tips-container" wx:if="{{food.tip}}">
   <!-- <image src="./images/nav.png" /> -->
   <view class="info">
     <view class="warn"></view>
@@ -46,7 +49,7 @@
     <view style="text-align:left;">{{item.name}}</view>
     <view style="text-align:right;"> {{item.value}}{{item.unit}}</view>
   </view>
-  <view class="open-close">
+  <view class="open-close" wx:if="{{food.tip}}">
         <text bindtap="show">{{showmore? '收起其他元素︿' : '展开更多元素﹀'}}</text>
   </view>
 

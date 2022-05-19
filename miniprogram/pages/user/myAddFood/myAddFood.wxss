@@ -1,3 +1,19 @@
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40rpx
+}
+.button-group .edit {
+  width: 30rpx;
+  height: 30rpx;
+}
+.button-group .delet { 
+  width: 30rpx;
+  height: 30rpx;
+  padding-left: 40rpx;
+
+}
+
 .project-container {
   margin: 0 40rpx;
   margin-top: 10rpx;

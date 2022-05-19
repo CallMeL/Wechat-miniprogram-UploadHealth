@@ -8,14 +8,12 @@
     <button class="authorize" open-type="getUserInfo" bindgetuserinfo="onAuthorize" wx:else>
       授权登录
     </button>
-    <view class="statistics">你的总记录餐数 {{wholeTime}}</view>
   </view>
 </view>
 <!--edit list-->
 <view class="btn-list">
   <button class="edit-button-1" bindtap="jumptoEditInform">
-    <!-- <image style="background-image: url('https://636c-cloud1-6gaunktybd5c7902-1310837650.tcb.qcloud.la/setting.png?sign=caefdfd0f4b7df2a7159bebd315f4163&t=1650979204');"/> -->
-    <view class="btn-note">个人信息修改</view>
+    <view class="btn-note" style="padding-top: 25rpx;">个人信息修改</view>
     <image class="btn-image" src="../../images/user/setting.png" mode="aspectFit"style="right:-200rpx;"></image> 
   </button>
 <view class="horizon-list">
@@ -28,6 +26,11 @@
   <image class="btn-image"src="../../images/user/addFood.31.25.png" mode="aspectFit"style="right:-100rpx;"></image> 
   </button>  
 </view>
+
+  <button class="edit-button-1" bindtap="jumptoAdvice" style="margin-top: 5%;height: 200rpx;">
+  <view class="btn-note" style="padding-top: 50rpx;">意见反馈</view>
+  <image class="btn-image"src="../../images/user/contact.00.44.png" mode="aspectFit"style="right:-250rpx;"></image> 
+  </button>  
 
 </view>
 

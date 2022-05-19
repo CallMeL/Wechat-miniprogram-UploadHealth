@@ -1,6 +1,8 @@
 {
     "navigationBarBackgroundColor":"#8cb4ff",
+    
     "navigationBarTitleText":"搜索食物",
+    "navigationBarTextStyle": "white",
   "usingComponents": {
   }
 }

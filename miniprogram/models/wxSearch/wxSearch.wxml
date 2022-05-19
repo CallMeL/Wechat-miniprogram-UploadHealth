@@ -1,14 +1,13 @@
 <template name="wxSearch">
   <view class="wxSearch" bindtap="wxSearchTap"  style="display:{{wxSearchData.view.isShow ? 'block':'none'}};height:{{wxSearchData.view.seachHeight}}px;top:{{wxSearchData.view.barHeight}}px;">
     <view  class="wxSearchInner">
-
         <view class="wxSearchMindKey">
             <view class="wxSearchMindKeyList">
                 <block wx:for="{{wxSearchData.mindKeys}}">
-                    <view class="wxSearchMindKeyItem" bindtap="wxSearchOnAddFood" data-key="{{item}}">
-                    <image bindtap="wxSearchOnAddFood" data-key="{{item}}"class="image"src="{{item.src}}"></image>
+                    <view class="wxSearchMindKeyItem">
+                    <image bindtap="wxSearchOnAddFood" data-key="{{item}}"class="image"src="{{item.src}}" wx:if="{{item.src}}"></image>
                     <view bindtap="wxSearchOnAddFood" data-key="{{item}}" class="title">{{item.name}}
-                      <view class="tag">脂肪:{{item.fat}}碳水:{{item.cho}}卡路里:{{item.kcal}}</view>
+                      <view  bindtap="wxSearchOnAddFood" data-key="{{item}}" class="tag">脂肪:{{item.fat}}碳水:{{item.cho}}卡路里:{{item.kcal}}</view>
                     </view>
                     
                     <!-- <view>
@@ -17,8 +16,7 @@
                     </view>      -->
                     </view>
     
-                </block>
-                <button bindtap="loadmore" style="display:{{wxSearchData.view.isShowSearchHistory? 'none':''}}">more</button>             
+                </block>          
             </view>
         </view>
 
