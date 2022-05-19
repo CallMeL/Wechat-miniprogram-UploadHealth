@@ -9,8 +9,11 @@ const _ = db.command
 exports.main = async (event, context) => {
   //let old_data = event.old_data;
   //console.log(old_data)
+  var skipNumber = Number(event.skipNumber)
+  var needNumber = Number(event.needNumber)
   const searchContent = event.searchContent
   const source = event.source
+  
   //source 1: foods,customs food db
   //source 0: food, system food db
   if (!searchContent) {
@@ -27,6 +30,7 @@ exports.main = async (event, context) => {
           $regex:'.*' + searchContent + '.*'
         }
       })
+      
       .get()
     }else{
       return await db
