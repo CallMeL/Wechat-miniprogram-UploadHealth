@@ -15,6 +15,9 @@ exports.main = async (event, context) => {
       data: {
         userId,
         name:foodname,
+        fat:event.fat.value,
+        cho:event.cho.value,
+        kcal:event.kcal.value,
         detail:event.foodDetail,
         createDate: new Date(),
       }

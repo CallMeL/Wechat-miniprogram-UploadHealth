@@ -7,23 +7,18 @@ const db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
-  const { goalId } = event
-
-  if (!goalId) {
+  const { foodId } = event
+console.log(foodId)
+  if (!foodId) {
     return
   }
 
   try {
     await db
-      .collection('goal-records')
+      .collection('foods')
       .where({
-        goalId
+        _id:foodId
       })
-      .remove()
-
-    await db
-      .collection('goals')
-      .doc(goalId)
       .remove()
   } catch (e) {
     console.log(e)
