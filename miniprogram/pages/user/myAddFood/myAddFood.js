@@ -1,4 +1,5 @@
-// pages/user/myAddFood/myAddFood.js
+import { showToast,showModal} from '../../../utils/UIUtil'
+import HomeModel from '../../../models/home'
 const globalEnv = getApp()
 Page({
 
@@ -32,10 +33,40 @@ getFoodList(){
     })
   
 },
-onFoodClick(e) {
-  const { goalId } = e.currentTarget.dataset
+editFood(e) {
+  const item = JSON.stringify(e.currentTarget.dataset)
   wx.navigateTo({
-    url: `/pages/detail/index?id=${goalId}`
+    url:`../addFood/addFood?item=${item}`
   })
 },
+deleteFood(e){
+  var that = this
+  wx.showModal({
+    title: '提示',
+    content: '是否确定删除',
+    success (res) {
+      if (res.confirm) {
+        wx.cloud.callFunction({
+          name:'deleteCustomFood',
+          data:{
+            foodId:e.currentTarget.dataset.id
+          },
+          success: res => {
+            console.log('done!')
+            showToast('删除成功', true)
+            that.getFoodList()
+          },
+          fail: res => {
+            console.log('fail!')
+            showToast('删除失败',false)
+         },
+        })
+      } else if (res.cancel) {
+        console.log('用户点击取消')
+      }
+    }
+  })
+  //console.log(e.currentTarget.dataset)
+
+}
 })

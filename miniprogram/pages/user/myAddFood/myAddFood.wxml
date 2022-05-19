@@ -1,13 +1,20 @@
 <!--pages/user/myAddFood/myAddFood.wxml-->
 <view class="project-container" wx:if="{{foodList.length}}">
-
-  <view class="project" wx:for="{{foodList}}" wx:key="_id" bind:tap="onFoodClick" data-goal-id="{{item._id}}">
+<view  wx:for="{{foodList}}" wx:key="_id" data-goal-id="{{item._id}}">
+  <view class="project">
       <view class="title">{{item.name}}</view>
       <m-tag>{{item.detail[0].name}}：{{item.detail[0].value}}</m-tag>
       <m-tag>{{item.detail[1].name}}：{{item.detail[1].value}}</m-tag>
       <m-tag>{{item.detail[2].name}}：{{item.detail[2].value}}</m-tag>
       <m-tag>{{item.detail[3].name}}：{{item.detail[3].value}}</m-tag>
 </view>
+<view class="button-group">
+      <image mode="aspectFit" bind:tap="editFood" data-item="{{item}}" class="edit" src="../../../images/home/details/edit.png"></image>
+      <image mode="aspectFit" bind:tap="deleteFood" data-id="{{item._id}}"class="delet" src="../../../images/home/details/delete.png"></image>     
+</view>   
+
+</view>
+
 
 </view>
 

@@ -55,7 +55,7 @@ Page({
   wxSearchInput: function(e){
     var that = this
     WxSearch.wxSearchInput(e,that);
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
   },
   wxSerchFocus: function(e){
     var that = this

@@ -1,7 +1,7 @@
 <!--pages/home/addFood/addFood.wxml-->
 <view class="container">
-  <input class="foodName" placeholder="食物名称" bindinput="inputTitle"/>
-
+  <input class="foodName" placeholder="{{foodName? foodName: '食物名称' }}" bindinput="inputTitle"/>
+  <view>请填写食物每100克的信息</view>
 <view class = "Detail-Container" wx:for="{{list}}" wx:for-item="item"  wx:key="index" data-item="{{item}}"> 
   <view class="Detail-name">{{item.name}}</view>
   <input type="text" data-id="{{index}}" maxlength="16" class="new-goal-title" value = "{{item.value}}"  bindfocus="bindFocus" bindinput="bindKeyInput"/>

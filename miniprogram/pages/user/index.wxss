@@ -13,7 +13,7 @@ right: 0;
   height: 100px;  
 }
 .btn-list .edit-button-1{
-  background-color: #a9c1e0;
+  background-color: #c0d5f0;
   margin:0 5%;
   height: 70px;
   border-radius: 10px;
@@ -27,7 +27,7 @@ right: 0;
   padding-top: 25px;
 }
 .btn-list .edit-button-2{
-  background-color: #a9c1e0;
+  background-color: #c0d5f0;
   width: 32%;
   margin:0 5%;
   display:inline-block;
