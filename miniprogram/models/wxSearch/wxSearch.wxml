@@ -9,21 +9,15 @@
                     <view bindtap="wxSearchOnAddFood" data-key="{{item}}" class="title">{{item.name}}
                       <view  bindtap="wxSearchOnAddFood" data-key="{{item}}" class="tag">脂肪:{{item.fat}}碳水:{{item.cho}}卡路里:{{item.kcal}}</view>
                     </view>
-                    
-                    <!-- <view>
-                      <view class="title">{{item.name}}</view>
-                     <view class="tag">脂肪:{{item.fat}}碳水:{{item.cho}}卡路里:{{item.kcal}}</view>
-                    </view>      -->
                     </view>
     
                 </block>          
             </view>
         </view>
-
         <view class="wxSearchHistory" style="display:{{wxSearchData.view.isShowSearchHistory ? 'block':'none'}}">
             <text class="wxSearchTitle">搜索历史</text>
             <view wx:if="{{wxSearchData.his[0]}}" class="wxSearchHistoryList">
-                <block wx:for="{{wxSearchData.his}}">
+                <block wx:for="{{wxSearchData.his}}"wx:for-index="idx" wx:if="{{idx<5}}">
                     <view class="wxSearchHistoryItem">
                         <text class="wxSearchHistoryItemText" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</text> 
                         <text class="wxSearchHistoryItemDel" bindtap="wxSearchDeleteKey" data-key="{{item}}" data-key="{{item}}">删除</text>
