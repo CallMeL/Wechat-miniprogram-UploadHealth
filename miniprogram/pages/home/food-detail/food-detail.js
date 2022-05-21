@@ -38,6 +38,7 @@ Page({
       })
     }else{
       this.setData({
+        fromSearch:options.fromSearch,
         foodId:queryBean.foodId,
         recordId:queryBean._id,
         belongsto:queryBean.belongsto,

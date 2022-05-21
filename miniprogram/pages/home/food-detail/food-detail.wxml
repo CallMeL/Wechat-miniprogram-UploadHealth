@@ -58,10 +58,10 @@
   <view style="text-align:right;"> {{item.value}}{{item.unit}}</view>
 </view>
 <view class='add_btn' >
-    <button class='btn' wx:if="{{formSearch}}"  bind:tap="addFoodRecord">
+    <button class='btn' wx:if="{{fromSearch==1}}"  bind:tap="addFoodRecord">
       添加
     </button>
-    <button class='btn' wx:if="{{!formSearch}}"  bind:tap="editFoodRecord">
+    <button class='btn' wx:if="{{fromSearch==0}}"  bind:tap="editFoodRecord">
       修改
     </button>
 
