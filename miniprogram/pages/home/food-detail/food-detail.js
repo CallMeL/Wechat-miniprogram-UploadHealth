@@ -1,10 +1,10 @@
 // pages/home/food-detail/food-detail.js
 import { showToast , showModal} from '../../../utils/UIUtil'
 import HomeModel from '../../../models/home'
-var Charts = require('../../../utils/charts');
 const globalEnv = getApp()
 Page({ 
   data: {
+    
     parameter: [{ id: 1, name: '早餐' }, { id: 2, name: '午餐' },{ id: 3, name: '晚餐' },{ id: 4, name: '零食' }],
     showmore:false,
     Q:null,photo:null,
@@ -93,6 +93,37 @@ Page({
       fail: res => {
         console.log('fail!'+res)
      },
+    })
+  },
+  editFoodRecord:function(){
+    var that = this
+    wx.showModal({
+      title: '是否修改',
+      content: '份数为'+this.data.howmany,
+      success (res) {
+        if (res.confirm) {
+          wx.cloud.callFunction({
+            name:'editFoodRecord',
+            data:{
+              recordId:that.data.recordId,
+              howmany:that.data.howmany
+            },
+            success: res => {
+              console.log('done!')
+              showToast('修改成功', true)
+              wx.navigateBack({
+                delta: 1,
+              })
+            },
+            fail: res => {
+              console.log('fail!')
+              showToast('修改失败',false)
+           },
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
   addFoodRecord:function(){
