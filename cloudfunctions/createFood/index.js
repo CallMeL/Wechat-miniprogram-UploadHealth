@@ -7,14 +7,14 @@ const db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
-  const {userId, foodname,foodDetail} = event
+  console.log(event)
   //detail = foodDetail
   //if (!foodName||!foodInform|| !userId) return
   try {
     const food = await db.collection('foods').add({
       data: {
-        userId,
-        name:foodname,
+        userId:event.userId,
+        name:event.foodname,
         fat:event.fat.value,
         cho:event.cho.value,
         kcal:event.kcal.value,

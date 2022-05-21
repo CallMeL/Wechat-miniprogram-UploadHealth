@@ -57,10 +57,14 @@
   <view style="text-align:left;">{{item.name}}</view>
   <view style="text-align:right;"> {{item.value}}{{item.unit}}</view>
 </view>
-<view class='add_btn' bind:tap="addFoodRecord" >
-    <button class='btn'>
-      {{fromSearch? '添加' : '再次添加'}}
+<view class='add_btn' >
+    <button class='btn' wx:if="{{fromSearch==1}}"  bind:tap="addFoodRecord">
+      添加
     </button>
+    <button class='btn' wx:if="{{fromSearch==0}}"  bind:tap="editFoodRecord">
+      修改
+    </button>
+
 </view>
 
 </view>

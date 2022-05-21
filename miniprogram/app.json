@@ -10,7 +10,7 @@
     "pages/user/addFood/addFood",
     "pages/user/myAddFood/myAddFood",
     "custom-tab-bar/index",
-    "pages/detail/detail",
+    
     "pages/user/advice/index"
   ],
   "window": {

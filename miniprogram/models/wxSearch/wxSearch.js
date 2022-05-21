@@ -77,10 +77,17 @@ function wxSearchInput(e, that, callBack){
     }
     temData.mindKeys = returnFoodList
     temData.value = text;
+    if(text==""){
+      temData.view.isShowSearchHistory=true;
+    }else{
+      temData.view.isShowSearchHistory=false;
+    }
+   
     //temData.mindKeys = mindKeys;
     that.setData({
         wxSearchData: temData
     });
+
     console.log(temData)
 }
 
@@ -94,14 +101,6 @@ function wxSearchFocus(e, that, callBack) {
     if (typeof (callBack) == "function") {
         callBack();
     }
-    // if(typeof(temData) != "undefined"){
-    //   temData.view.hidden= false;
-    //   that.setData({
-    //     wxSearchData:temData
-    //   });
-    // }else{
-
-    // }
 }
 function wxSearchBlur(e, that, callBack) {
     var temData = that.data.wxSearchData;
@@ -124,12 +123,13 @@ function wxSearchHiddenPancel(that){
 
 function wxSearchKeyTap(e, that, callBack) {
     //回调
-    //var temData = that.data.wxSearchData;
-    //temData.value = e.target.dataset.key;
-    
-    wx.navigateTo({
-        url: `../../home/food-detail/food-detail?id=${e.target.dataset.key}`
-      })
+    var temData = that.data.wxSearchData;
+    var text = e.target.dataset.key
+    temData.value = text;
+    that.setData({
+      wxSearchData: temData
+  });
+
 }
 function wxSearchOnAddFood(e,that){
   console.log(e.target.dataset)

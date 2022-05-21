@@ -60,7 +60,6 @@ Page({
           fat:this.data.list[1],
           cho:this.data.list[2],
           kcal:this.data.list[0],
-          
           foodname:this.data.foodName,
           foodDetail:this.data.list
         },
