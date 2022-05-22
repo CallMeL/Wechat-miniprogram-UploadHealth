@@ -20,7 +20,5 @@
 <view style="margin-bottom: 10%;">
   <text class="Text">您的意见对我们非常宝贵 \n 我们会及时查看并处理~</text>
 </view>
-
-
 <image mode="aspectFit" style="width: 100%;" src="../../../images/user/advice Bottom.09.28.png"></image>
 </view>
