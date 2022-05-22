@@ -1,66 +1,71 @@
-// pages/user/advice/index.js
+import { showToast} from '../../../utils/UIUtil'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    userId:null,
+    focus: false,
+    title:null,content:null
+  },
+  onLoad: function(options) {
+    this.data.userId = options.id
+    console.log(this.data.userId)
+},
+  textareaInput1: function(e) {
+    this.data.title = e.detail.value
+    //console.log(e.detail.value)
+  },
+  textareaInput2: function (e) {
+    this.data.content = e.detail.value
+   // console.log(e.detail.value)
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onCancel() {
+    wx.navigateBack({
+      delta: 1
+    })
   },
+  onAddAdvice(e){
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '是否提交意见',
+      success (res) {
+        if (res.confirm) {
+          wx.cloud.callFunction({
+            name:'addAdvice',
+            data:{
+              userId:that.data.userId,
+              title:that.data.title,
+              content:that.data.content
+            },
+            success: res => {
+              console.log('done!')
+              wx.showToast({
+                title: '反馈成功',
+                icon: 'success',
+                duration: 2000,
+                success:function(){
+                  setTimeout(function () {
+                    //要延时执行的代码
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                  }, 2000) //延迟时间
+                }
+              })
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+            },
+            fail: res => {
+              console.log('fail!')
+              showToast('添加失败',false)
+           },
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  
   }
+
+
 })

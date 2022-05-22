@@ -1,2 +1,26 @@
-<!--pages/user/advice/index.wxml-->
-<text>pages/user/advice/index.wxml</text>
+<view class="contentView">
+  <view class="textarea_title">意见标题</view>
+  <view class="textarea_bg">
+    <textarea bindinput="textareaInput1" maxlength="-1" auto-height />
+  </view>
+</view>
+
+<view class="contentView">
+  <view class="textarea_title">意见内容</view>
+  <view class="textarea_bg">
+    <textarea bindinput="textareaInput2" style="height: 4em" maxlength="-1" />
+  </view>
+</view> 
+
+<view class="button-group">
+    <view class="cancel" bind:tap="onCancel">取消</view>
+    <view class="confirm" bind:tap="onAddAdvice">确定</view>
+  </view>
+<view  class="Botoom" >
+<view style="margin-bottom: 10%;">
+  <text class="Text">您的意见对我们非常宝贵 \n 我们会及时查看并处理~</text>
+</view>
+
+
+<image mode="aspectFit" style="width: 100%;" src="../../../images/user/advice Bottom.09.28.png"></image>
+</view>
