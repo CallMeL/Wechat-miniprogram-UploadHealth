@@ -1,1 +1,56 @@
 /* pages/user/advice/index.wxss */
+
+.Botoom{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.Text{
+  font-weight: bolder;
+  position: absolute;
+  right: 0;
+  margin-right: 2%;
+  color: #739177;
+}
+.contentView{
+  width: 100%;
+  margin-top: 40rpx;
+}
+.textarea_title{
+  margin-left: 5%;
+  color: rgb(34, 34, 34);
+  font-weight: bold;
+}
+.textarea_bg{
+  padding: 0 25rpx;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  background-color: #fff;
+  border-left: 6px solid #1565c0;
+}
+textarea{
+  width: 700rpx;
+  padding: 25rpx 0;
+} 
+.button-group {
+  margin-right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 56rpx;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.button-group .cancel {
+  color: #666;
+}
+
+.button-group .confirm {
+  margin-left: 36rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 12rpx;
+  background-color: #1565c0;
+  color: white;
+}

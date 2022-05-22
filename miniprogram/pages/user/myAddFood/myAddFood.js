@@ -1,6 +1,4 @@
-import { showToast,showModal} from '../../../utils/UIUtil'
-import HomeModel from '../../../models/home'
-const globalEnv = getApp()
+import { showToast} from '../../../utils/UIUtil'
 Page({
 
   data: {
