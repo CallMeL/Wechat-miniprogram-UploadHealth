@@ -41,3 +41,9 @@
     <view class="confirm" bind:tap="onConfirm">确定</view>
 </view>
 
+<view  class="Botoom" >
+<!-- <view style="margin-bottom: 10%;">
+  <text class="Text">在这里添加您的自定义食物</text>
+</view> -->
+<image mode="aspectFit" style="width: 100%;" src="../../../images/user/userBottom.05.48.png"></image>
+</view>

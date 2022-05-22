@@ -1,3 +1,15 @@
+.Botoom{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.Text{
+  font-weight: bolder;
+  position: absolute;
+  right: 0;
+  margin-right: 2%;
+  color: #739177;
+}
 .container {
   position: fixed;
   width: 90%;
