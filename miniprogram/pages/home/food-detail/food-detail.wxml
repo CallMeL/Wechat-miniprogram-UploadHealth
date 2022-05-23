@@ -4,7 +4,7 @@
     <image src="{{photo}}"></image>
   </view>
   <view class="right" wx:if="{{!photo}}">
-    <image src="../../../images/home/details/nofood.39.47.png"></image>
+    <image src="https://636c-cloud1-6gaunktybd5c7902-1310837650.tcb.qcloud.la/nofood.39.47.png?sign=10c725daae5699f86c911da7dcefde42&t=1653288919"></image>
   </view>
   <view class="left">
     <view class="goal-title">{{foodName}} </view>

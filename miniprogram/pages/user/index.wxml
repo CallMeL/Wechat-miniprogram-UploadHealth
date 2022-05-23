@@ -14,22 +14,22 @@
 <view class="btn-list">
   <button class="edit-button-1" bindtap="jumptoEditInform">
     <view class="btn-note" style="padding-top: 25rpx;">个人信息修改</view>
-    <image class="btn-image" src="../../images/user/setting.png" mode="aspectFit"style="right:-200rpx;"></image> 
+    <image class="btn-image" src="https://636c-cloud1-6gaunktybd5c7902-1310837650.tcb.qcloud.la/setting.png?sign=21d4851db25591a633975558f9c67c81&t=1653289776" mode="aspectFit"style="right:-200rpx;"></image> 
   </button>
 <view class="horizon-list">
   <button class="edit-button-2" bindtap="jumptoAddMyFood" >
-  <image class="btn-image"src="../../images/user/FoodAdd.46.13.png" mode="aspectFit" style="right:-130rpx;"></image> 
+  <image class="btn-image"src="https://636c-cloud1-6gaunktybd5c7902-1310837650.tcb.qcloud.la/FoodAdd.46.13.png?sign=70f270c37a11d8e3b57c7011946bc96c&t=1653289374" mode="aspectFit" style="right:-130rpx;"></image> 
   <view class="btn-note" >自定食物</view>
   </button>  
   <button class="edit-button-2" bindtap="jumptoMyAddFood">
   <view class="btn-note">我的食物</view>
-  <image class="btn-image"src="../../images/user/addFood.31.25.png" mode="aspectFit"style="right:-100rpx;"></image> 
+  <image class="btn-image"src="https://636c-cloud1-6gaunktybd5c7902-1310837650.tcb.qcloud.la/addFood.31.25.png?sign=5d21f6abcef528518202db790c9ae0f0&t=1653289738" mode="aspectFit"style="right:-100rpx;"></image> 
   </button>  
 </view>
 
   <button class="edit-button-1" bindtap="jumptoAdvice" style="margin-top: 5%;height: 200rpx;">
   <view class="btn-note" style="padding-top: 50rpx;">意见反馈</view>
-  <image class="btn-image"src="../../images/user/contact.00.44.png" mode="aspectFit"style="right:-250rpx;"></image> 
+  <image class="btn-image"src="cloud://cloud1-6gaunktybd5c7902.636c-cloud1-6gaunktybd5c7902-1310837650/contact.00.44.png" mode="aspectFit"style="right:-250rpx;"></image> 
   </button>  
 
 </view>

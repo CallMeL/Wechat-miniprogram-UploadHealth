@@ -32,6 +32,7 @@
 textarea{
   width: 700rpx;
   padding: 25rpx 0;
+  box-shadow: 0 6rpx 24rpx rgba(25, 118, 210, 0.08);
 } 
 .button-group {
   margin-right: 5%;

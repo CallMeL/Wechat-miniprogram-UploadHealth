@@ -13,7 +13,8 @@
 }
 .checked_parameter{
   width: 10px;
-  background: rebeccapurple;
+  background: rgb(161, 123, 199);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
   padding: 3px;
   border-radius: 5px;
   color: #fff;
