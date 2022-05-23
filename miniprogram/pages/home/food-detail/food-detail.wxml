@@ -10,7 +10,7 @@
     <view class="goal-title">{{foodName}} </view>
     <view class="button-group">
       <image mode="aspectFit" bind:tap="showPicker_03" class="edit" src="../../../images/home/details/edit.png"></image>
-      <image mode="aspectFit" bind:tap="deletFoodRecord" class="delet" src="../../../images/home/details/delete.png"></image>     
+      <image mode="aspectFit" wx:if="{{fromSearch==0}}" bind:tap="deletFoodRecord" class="delet" src="../../../images/home/details/delete.png"></image>     
     </view>
     <view class="fenliang">份量：{{howmany}}</view>
   </view>
