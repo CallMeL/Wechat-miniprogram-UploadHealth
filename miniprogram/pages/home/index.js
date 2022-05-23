@@ -1,5 +1,3 @@
-import * as echarts from '../../libs/ec-canvas/echarts'
-import pieOptions from '../../config/pieDefOption'
 import { showToast } from '../../utils/UIUtil'
 import HomeModel from '../../models/home'
 const globalEnv = getApp()
@@ -174,14 +172,4 @@ Page({
     })
   },
 
-
-  updatePieOption() {
-    const data = HomeModel.serializeForChart(this.data.goalList)
-    const { min, max, list } = data
-    const option = pieOptions
-    option.visualMap.min = min
-    option.visualMap.max = max
-    option.series[0].data = list
-    this.pie.setOption(option)
-  }
 })
