@@ -1,11 +1,19 @@
 {
+
   "pages": [
-    "pages/user/index",
-    "pages/user/advice/index", 
     "pages/home/index",
     "pages/test/test",
-    "pages/home/addFood/addFood", 
+    
+    "pages/user/index",
+    
     "pages/calendar/index",
+    
+    "pages/user/advice/index", 
+   
+   
+    "pages/home/addFood/addFood",
+    
+
     "pages/user/editInform/editInform",
     "pages/home/food-detail/food-detail",
     "pages/user/addFood/addFood",
@@ -40,4 +48,5 @@
     ]
   },
   "sitemapLocation": "sitemap.json"
+
 }

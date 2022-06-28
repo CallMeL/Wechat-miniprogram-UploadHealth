@@ -20,6 +20,8 @@ exports.main = async (event, context) => {
     return await db.collection('users').add({
       data: {
         _openid: wxContext.OPENID,
+        appid: wxContext.APPID,
+        unionid: wxContext.UNIONID,
         details: thedetails
       }
     })

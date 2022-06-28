@@ -1,36 +1,66 @@
+// pages/test/test.js
 Page({
 
+  /**
+   * 页面的初始数据
+   */
   data: {
-    recordList:[]
+
   },
 
-  getData(dataBaseName = "buyerBasics", skipNumber = 0, needNumber = 50){
-    wx.cloud.callFunction({
-      name:"test",
-      data:{
-        searchContent:"啤酒",
-        source:false,
-        databaseName:dataBaseName,
-        skipNumber:skipNumber,
-        needNumber:needNumber
-      }
-    })
-    .then(res=>{
-      console.log(res.result)
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
 
-      var oldRecordList = this.data.recordList
-      var newRecordList = oldRecordList.concat(res.result.data)
-      this.setData({
-        recordList:newRecordList
-      })
-    })
   },
 
-  onLoad: function (options) {
-    this.getData()
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
 
-  onReachBottom: function () {
-    this.getData("buyerBasics",this.data.recordList.length,3)
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
   }
 })

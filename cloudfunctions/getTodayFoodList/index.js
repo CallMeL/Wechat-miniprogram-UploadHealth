@@ -14,6 +14,7 @@ exports.main = async (event, context) => {
   const _ = db.command
 
   try {
+    console.log([new Date(today+" 00:00:00"),new Date(today+" 23:59:59")])
     console.log('in cloud search ' + event.userId)
     return await db
       .collection('food-records')

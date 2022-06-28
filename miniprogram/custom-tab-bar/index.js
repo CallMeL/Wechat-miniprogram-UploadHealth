@@ -23,21 +23,21 @@ Component({
         "pagePath": "/pages/home/index",
         "text": "主页",
         "iconPath": "../images/tab-bar/home.png",
-        "selectedIconPath": "../images/tab-bar/home-selected.png"
+        "selectedIconPath": "../images/tab-bar/home-act.png"
       },
       {
         "current": 1,
         "pagePath": "/pages/calendar/index",
         "text": "日历",
-        "iconPath": "../images/tab-bar/calender.png",
-        "selectedIconPath": "../images/tab-bar/calender.png"
+        "iconPath": "../images/tab-bar/cal.png",
+        "selectedIconPath": "../images/tab-bar/cal-act.png"
       },
       {
         "current": 2,
         "pagePath": "/pages/user/index",
         "text": "我的",
         "iconPath": "../images/tab-bar/user.png",
-        "selectedIconPath": "../images/tab-bar/user.png"
+        "selectedIconPath": "../images/tab-bar/user-act.png"
       }
     ]
   },
