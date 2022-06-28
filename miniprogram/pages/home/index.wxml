@@ -12,9 +12,12 @@
 </view>
 
 <!-- 饼状图 -->
-<view class="pie-container">
+<!-- <view class="pie-container">
   <image class="empty-img"/>
-</view>
+</view> -->
+<!-- <view style="display: flex; justify-content: center; align-items: center;">
+  <canvas-ring id="canvasRing" value="1200"></canvas-ring>
+</view> -->
 <!-- 今日添加食物信息 -->
 <view class="project-container" wx:if="{{foodList.length}}">
   <view class="count">

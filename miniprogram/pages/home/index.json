@@ -2,6 +2,7 @@
   "usingComponents": {
     "m-tag": "../../components/tag/index",
     "m-loading": "../../components/loading/index",
-    "m-tips": "../../components/tips/index"
+    "m-tips": "../../components/tips/index",
+    "canvas-ring": "/components/canvas-ring/canvas-ring"
   }
 }
