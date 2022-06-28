@@ -4,15 +4,13 @@
     "pages/user/advice/index", 
     "pages/home/index",
     "pages/test/test",
-    "pages/home/addFood/addFood",
-    
+    "pages/home/addFood/addFood", 
     "pages/calendar/index",
     "pages/user/editInform/editInform",
     "pages/home/food-detail/food-detail",
     "pages/user/addFood/addFood",
     "pages/user/myAddFood/myAddFood",
     "custom-tab-bar/index"
-    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
