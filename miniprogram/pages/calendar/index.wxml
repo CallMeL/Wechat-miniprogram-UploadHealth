@@ -1,2 +1,88 @@
-<!--pages/calendar/index.wxml-->
-<text>pages/calendar/index.wxml</text>
+
+<view style="box-shadow: 0 6rpx 16rpx rgba(63, 50, 7, 0.1); width: 90%;height:100%;overflow:hidden;margin: 0 auto;border-radius: 20rpx;">
+  <calendar
+    id="calendar"
+    config="{{calendarConfig}}"
+    bind:onSwipe="onSwipe"
+    bind:whenChangeWeek="whenChangeWeek"
+    bind:whenChangeMonth="whenChangeMonth"
+    bind:takeoverTap="takeoverTap"
+    bind:afterTapDate="afterTapDate"
+    bind:afterCalendarRender="afterCalendarRender"
+  ></calendar>
+</view>
+<view class="{{isCreating ? 'blur-bg' : ''}}">
+<!-- 用户信息 -->
+<view class='user-info-container' wx:if="{{!hasCreateUser}}">
+  <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFit'></image>
+  <view class='info'>
+    <view class='name' wx:if="{{userInfo}}">{{userInfo.nickName}}，</view>
+    <button class="authorize" open-type="getUserInfo" bindgetuserinfo="onAuthorize" wx:else>
+      授权登录
+    </button>
+    <view class="statistics">你的总累计时间为 {{wholeTime}}</view>
+  </view>
+</view>
+
+<!-- 饼状图 -->
+<!-- <view class="pie-container">
+  <image class="empty-img"/>
+</view> -->
+<view style="height: 30rpx;">
+</view>
+<!-- <mpProgress config="{{perConfig}}" percentage="{{percentage}}"></mpProgress> -->
+<!-- <view style="display: flex; justify-content: center; align-items: center;">
+  <canvas-ring id="canvasRing" value="1200"></canvas-ring>
+</view> -->
+<!-- 今日添加食物信息 -->
+<view class="project-container"  wx:if="{{foodList.length}}">
+  <view>
+  <!-- 零食 -->
+  <view class="catgory" wx:if="{{SN==true}}">零食</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='零食'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+    </view>
+  <!-- 晚餐 -->
+  <view class="catgory" wx:if="{{DN==true}}">晚餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='晚餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+    </view>
+  <!-- 午餐 -->
+    <view class="catgory" wx:if="{{LC==true}}">午餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='午餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+
+
+    </view>
+<!-- 早餐 -->
+<view class="catgory" wx:if="{{BF==true}}">早餐</view>
+    <view class="project" wx:for="{{foodList}}" wx:for-item="item" wx:key="_id" bind:tap="onFoodClick" data-Inform="{{item}}" wx:if="{{item.belongsto=='早餐'}}">
+      <view class="title">{{item.foodName}}</view>
+      <view class="tags">
+        <m-tag>份量：{{item.howmany}}</m-tag>
+        <m-tag>添加时间：{{item.Date}}</m-tag>
+      </view>  
+
+
+    </view>
+  </view>
+</view>
+
+<view class="loading" wx:elif="{{!foodList}}">
+  <m-loading />
+</view>
+
+</view>
+

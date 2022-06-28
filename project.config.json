@@ -18,15 +18,17 @@
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
+    "compileHotReLoad": true,
     "lazyloadPlaceholderEnable": false,
     "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "useIsolateContext": true,
+    "useIsolateContext": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
@@ -35,13 +37,11 @@
     "minifyWXML": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "ignoreUploadUnusedFiles": true,
-    "useStaticServer": true
+    "ignoreUploadUnusedFiles": true
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
-  "condition": {},
   "compileType": "miniprogram",
   "srcMiniprogramRoot": "miniprogram/",
   "editorSetting": {
@@ -54,5 +54,7 @@
     "ignore": [],
     "include": []
   },
-  "appid": "wxef9607207847cf77"
+  "appid": "wxef9607207847cf77",
+  "projectname": "%E9%A5%AE%E9%A3%9F",
+  "condition": {}
 }

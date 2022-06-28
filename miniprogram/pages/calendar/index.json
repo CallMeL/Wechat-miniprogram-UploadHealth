@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "calendar": "../../components/v2/index",
+    "m-tag": "../../components/tag/index",
+    "m-loading": "../../components/loading/index",
+    "m-tips": "../../components/tips/index",
+    "mpProgress": "./mp-progress/dist/component/mp-progress",
+    "canvas-ring": "/components/canvas-ring/canvas-ring"
+  }
 }
