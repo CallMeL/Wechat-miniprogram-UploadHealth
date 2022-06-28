@@ -1,13 +1,11 @@
 <view class="{{isCreating ? 'blur-bg' : ''}}">
 <!-- 用户信息 -->
-<view class='user-info-container' wx:if="{{!hasCreateUser}}">
-  <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFit'></image>
+
+<view class='user-info-container'>
+  <image class='avatar' src='{{avatarUrl}}' mode='aspectFit'></image>
   <view class='info'>
-    <view class='name' wx:if="{{userInfo}}">{{userInfo.nickName}}，</view>
-    <button class="authorize" open-type="getUserInfo" bindgetuserinfo="onAuthorize" wx:else>
-      授权登录
-    </button>
-    <view class="statistics">你的总累计时间为 {{wholeTime}}</view>
+    <view class='name' wx:if="{{!showAthoButton}}">{{nickname}}，</view>
+    <button wx:if="{{showAthoButton}}" class="authorize" open-type="getUserProfile" bindtap="getUserProfile">授权信息</button>
   </view>
 </view>
 
@@ -69,9 +67,9 @@
   </view>
 </view>
 
-<view class="loading" wx:elif="{{!foodList}}">
+<!-- <view class="loading" wx:elif="{{!foodList}}">
   <m-loading />
-</view>
+</view> -->
 <m-tips warn="Hi，今天还没有记录食物呢" tips="点击右下角的 “+” 开始吧！" wx:else></m-tips>
 <image class="create" src="../../images/home/create-btn.png" bind:tap="JumpToAddFoodPage" />
 </view>
