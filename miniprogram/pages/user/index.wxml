@@ -3,10 +3,12 @@
 <!--user icon-->
 <view class='user-info-container'>
 
+
   <image class='avatar' src='{{avatarUrl}}' mode='aspectFit'></image>
   <view class='info'>
     <view class='name' wx:if="{{!showAthoButton}}">{{nickname}}，你好！</view>
     <!-- <button wx:if="{{showAthoButton}}" class="authorize" open-type="getUserProfile" bindtap="getUserProfile">授权信息</button> -->
+
   </view>
 </view>
 <!--edit list-->

@@ -50,6 +50,32 @@ Page({
       }
     })
   },
+
+  getUserProfile: function (e) {
+    wx.getUserProfile({
+      desc: '业务需要',
+      success: res => {
+        var jsonStr = res.rawData .replace(" ", "")
+        if (typeof jsonStr != 'object') {
+        jsonStr = jsonStr.replace(/\ufeff/g, "");
+        var jj = JSON.parse(jsonStr);
+        console.log(jj)
+        }      
+        this.setData({
+          avatarUrl:jj.avatarUrl,
+          nickname:jj.nickName,
+          userInfo: jj,
+          showAthoButton: false
+        })
+        globalEnv.globalData.userInfo = jj
+        try {
+          wx.setStorageSync('avatarUrl', jj.avatarUrl)
+          wx.setStorageSync('nickName', jj.nickName)
+          console.log("storage done")
+        } catch (e) { console.log(e)}
+      }
+    })
+  },
   getTodayFoodList:function(){
   var foodDetail = [], howmany = 0.0
    wx.cloud.callFunction({
@@ -155,6 +181,7 @@ Page({
       })
      }
     this.initUserInfo()
+
   },
   initUserInfo() {
     HomeModel.getUserInfo().then(
@@ -219,6 +246,7 @@ Page({
     });
     console.log("chart1" + this.data.owner + "    chart2" + this.data.owner)
    },
+
   onShow() {
     this.setData({
       nickname:globalEnv.globalData.userInfo.nickName,

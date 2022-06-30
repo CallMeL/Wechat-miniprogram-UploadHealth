@@ -2,12 +2,14 @@
 <!-- 用户信息 -->
 
 
+
 <view style = "height: 20rpx;" ></view>
 <view style=" width: 90%;overflow:hidden;margin: 0 auto 20rpx;box-shadow: 0 6rpx 16rpx rgba(63, 50, 7, 0.1);border-radius: 20rpx;padding: 0 0 20rpx;">
   <view class='user-info-container'>
   <image class='avatar' src='{{avatarUrl}}' mode='aspectFit'></image>
   <view class='info'>
     <view class='name' wx:if="{{!showAthoButton}}">{{nickname}}，你好！</view>
+
     <button wx:if="{{showAthoButton}}" class="authorize" open-type="getUserProfile" bindtap="getUserProfile">授权信息</button>
   </view>
 

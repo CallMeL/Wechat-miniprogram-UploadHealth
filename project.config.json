@@ -38,8 +38,10 @@
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
     "ignoreUploadUnusedFiles": true,
+
     "useStaticServer": true,
     "localPlugins": false
+
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
