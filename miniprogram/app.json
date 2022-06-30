@@ -1,10 +1,16 @@
 {
+
   "pages": [
     "pages/calendar/index",
-    "pages/user/index",
-    "pages/user/advice/index", 
     "pages/home/index",
     "pages/test/test",
+    
+    "pages/user/index",
+    
+    
+    "pages/user/advice/index", 
+   
+   
     "pages/home/addFood/addFood",
     
 
@@ -13,7 +19,6 @@
     "pages/user/addFood/addFood",
     "pages/user/myAddFood/myAddFood",
     "custom-tab-bar/index"
-    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -43,4 +48,5 @@
     ]
   },
   "sitemapLocation": "sitemap.json"
+
 }

@@ -16,21 +16,17 @@ plugin
   .use(timeRange)
   .use(holidays)
 
-var viewSwitched = false
-
+var Charts = require('../../utils/charts.js');
+var wxCharts = require('../../utils/wxcharts.js');
 const conf = {
   data: {
-    // perConfig: {
-    //   canvasSize: {
-    //     width: 400,
-    //     height: 400
-    //   },
-    //   percent: 100,
-    //   barStyle: [{width: 30, fillStyle: '#f0f0f0'}, {width: 30, animate: true, lineCap:'round',fillStyle: [{position: 0, color: '#56B37F'}, {position: 1, color: '#c0e674'}]}],
-    //   needDot: true,
-    //   dotStyle: [{r: 24, fillStyle: '#fff', shadow: 'rgba(0,0,0,.15)'}, {r: 10, fillStyle: '#56B37F'}]
-    // },
-    // percentage: 90,
+    data:0,
+    pro:0,
+    cho:0,
+    fat:0,
+    sum:0,
+    kcal:0,
+    recKcal:2000,
     calendarConfig: {
       theme: 'elegant',
       weekMode: true,
@@ -74,10 +70,6 @@ const conf = {
     console.log('afterCalendarRender', e)
     const calendar = this.selectComponent('#calendar').calendar
     calendar.weekModeJump()
-    
-    // 获取日历组件上的 calendar 对象
-    // const calendar = this.selectComponent('#calendar').calendar
-    // console.log('afterCalendarRender -> calendar', calendar)
   },
   onSwipe(e) {
     console.log('onSwipe', e)
@@ -90,7 +82,6 @@ const conf = {
       duration: 1500
     })
   },
-
   generateRandomDate(type) {
     let random = ~~(Math.random() * 10)
     switch (type) {
@@ -294,12 +285,37 @@ const conf = {
         break
     }
   },
-  onReady: function() {
-    var that = this;
-    that.canvasRing = that.selectComponent("#canvasRing");
-    that.canvasRing.showCanvasRing();
+ calculate:function(){
+    wx.cloud.callFunction({
+      name:'getFoodByID',
+      data:{
+        foodId:this.data.foodId,
+        source:this.data.source
+      },
+      success: res => {
+        console.log('get foodbyID done!')
+        console.log(this.data.foodId)
+        console.log(res)
+        this.setData({
+          Q:JSON.parse(JSON.stringify(res.result.data[0])),
+          foodDetail:res.result.data[0].detail,
+        })
+        for (let index = 0; index < this.data.foodDetail.length; index++) {
+          var up ='foodDetail['+index+'].value'
+          var num = this.data.foodDetail[index].value
+          this.setData({
+            [up] : (num * this.data.howmany).toFixed(2),
+            foodDetail:this.data.foodDetail
+          })
+        }
+      },
+      fail: res => {
+        console.log('fail!'+res)
+     },
+    })
   },
   getOneDayFoodList:function(){
+    
     const options = {
       lunar: true // 在配置showLunar为false, 但需返回农历信息时使用该选项，使用此配置需引用农历插件
     }
@@ -320,14 +336,21 @@ const conf = {
            BF:false,
            LC:false,
            DN:false,
-           SN:false
+           SN:false,
+           pro:0,
+           cho:0,
+           fat:0,
+           sum:0,
+           kcal:0
          })
+
          for (let index = 0; index < this.data.foodList.length; index++) {
           
            var up ='foodList['+index+'].Date'
            var time = new Date(this.data.foodList[index].Date)
            var hour = time.getHours()
            var min = time.getMinutes()
+           var foodDetail, howmany
            //console.log(num)
            this.setData({
              [up] : (hour+':'+min),
@@ -347,17 +370,131 @@ const conf = {
            if (this.data.foodList[index].belongsto=='零食'){
              this.setData({SN:true})
            }
-           
+
+
+          //begin calculation
+          console.log(this.data.foodList)
+          wx.cloud.callFunction({
+            name:'getFoodByID',
+            data:{
+              foodId:this.data.foodList[index].foodId,
+              source:this.data.foodList[index].source
+            },
+            success: res => {
+              console.log('get foodbyID done!')
+              console.log(this.data.foodList[index].foodId)
+              console.log(res)
+              // this.setData({
+              //   Q:JSON.parse(JSON.stringify(res.result.data[0])),
+              foodDetail = res.result.data[0].detail
+              howmany = this.data.foodList[index].howmany
+              this.setData({
+                kcal: this.data.kcal + foodDetail[0].value*howmany,
+                pro: this.data.pro + foodDetail[3].value*howmany,
+                cho: this.data.cho + foodDetail[2].value*howmany,
+                fat: this.data.fat + foodDetail[1].value*howmany,
+              })
+                this.setData({
+                  sum: this.data.pro +  this.data.cho +  this.data.fat
+                })
+                this.setData({
+                  pro_p:(this.data.pro/this.data.sum*100).toFixed(2),
+                  cho_p:(this.data.cho/this.data.sum*100).toFixed(2),
+                  fat_p:(this.data.fat/this.data.sum*100).toFixed(2),
+                })
+                console.log("--sum is:" + this.data.sum + "\npro is:" + this.data.pro + "\ncho:" + this.data.cho + "\nfat: " +  this.data.fat )
+                console.log(this.data.kcal)
+                this.setChart()
+
+            },
+            fail: res => {
+              console.log('fail!'+res)
+           }
+          })
          }
-         console.log(this.data.SN)
+
          console.log(this.data.foodList)
+
+         this.setChart()
        },
        fail: res => {
          console.log('fail!')
       },
      })
    },
- 
+   setChart(){
+    // var ts = new Date().getTime()
+    // const calendar = this.selectComponent('#calendar').calendar
+    // const date = calendar.getSelectedDates({lunar:true})[0]
+    // this.setData({
+    //   owner: "" + date.year + date.month + date.date
+    // })
+    // console.log(ts)
+    // console.log(!this.data.visited.includes(ts))
+    //   this.setData({
+    //     owner: "" + ts
+    //   })
+    // this.setData({
+    //   owner: this.data.owner + 1
+    // })
+    //   console.log("11111111111sum is:" + this.data.sum + "\npro is:" + this.data.pro + "\ncho:" + this.data.cho + "\nfat: " +  this.data.fat )
+    //   console.log("11111111111111111111")
+
+      new Charts({
+        type:"ring",
+        data: [this.data.pro, this.data.fat,this.data.cho],
+        colors: ["#7158ec", "#fec312", "#1db2f4"],
+        canvasId:"chart1",// + this.data.owner,
+        point: {
+            x: 95,
+            y: 95
+        },
+        radius : 60
+    });
+    var rest = 0
+    if(this.data.kcal >= this.data.recKcal){
+      rest = 0
+    }
+    else{
+      rest = this.data.recKcal-this.data.kcal
+    }
+    new Charts({
+        type:"ring",
+        data: [this.data.kcal,rest],
+        colors: ["#ff3444", "#eee"],
+        canvasId: "chart2",// + this.data.owner,
+        point: {
+            x: 95,
+            y: 95
+        },
+        radius : 60,
+    });
+    new wxCharts({
+      canvasId: 'chart5',
+      type: 'line',
+      categories: [1,2,3],
+      animation: false,
+      // background: '#f5f5f5',
+      series: [{
+          name: '热量',
+          data: [4,5,6],
+          format: function (val, name) {
+              return val.toFixed(2) + '万';
+          }
+      }],
+      xAxis: {
+          disableGrid: true
+      },
+      width: 350,
+      height: 200,
+      dataLabel: false,
+      dataPointShape: true,
+      extra: {
+          lineStyle: 'curve'
+      }
+  });
+    console.log("chart1" + this.data.owner + "    chart2" + this.data.owner)
+   },
    onLoad() {
      this.initUserInfo()  
    },
@@ -372,6 +509,14 @@ const conf = {
          }
        })
        .then(() => { 
+        wx.cloud.database().collection('users')
+        .doc(globalEnv.data.userId).get()
+        .then(res =>{
+          console.log(res.data.details)
+            this.setData({
+              recKcal:res.data.details.activity,
+            })
+        })
          this.getOneDayFoodList()
        })
    },

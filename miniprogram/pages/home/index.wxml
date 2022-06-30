@@ -1,16 +1,35 @@
 <view class="{{isCreating ? 'blur-bg' : ''}}">
 <!-- 用户信息 -->
-<view class='user-info-container' wx:if="{{!hasCreateUser}}">
-  <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFit'></image>
+
+
+<view style = "height: 20rpx;" ></view>
+<view style="width: 90%;overflow:hidden;margin: 0 auto 20rpx;box-shadow: 0 6rpx 16rpx rgba(63, 50, 7, 0.1);border-radius: 20rpx;"  wx:if="{{foodList.length}}">
+  <view class='user-info-container'>
+  <image class='avatar' src='{{avatarUrl}}' mode='aspectFit'></image>
   <view class='info'>
-    <view class='name' wx:if="{{userInfo}}">{{userInfo.nickName}}，</view>
-    <button class="authorize" open-type="getUserInfo" bindgetuserinfo="onAuthorize" wx:else>
-      授权登录
-    </button>
-    <view class="statistics">你的总累计时间为 {{wholeTime}}</view>
+    <view class='name' wx:if="{{!showAthoButton}}">{{nickname}}，你好！</view>
+    <button wx:if="{{showAthoButton}}" class="authorize" open-type="getUserProfile" bindtap="getUserProfile">授权信息</button>
   </view>
 </view>
-
+  <view style="justify-content: center;align-items: center;display: flex;margin: 30rpx 0 40rpx;">
+    <canvas canvas-id="chart3" style=" display: inline-block; width:190px;height:150px;"></canvas>
+    <canvas canvas-id="chart4" style="display: inline-block; width:190px;height:150px;"></canvas>
+  </view>
+  <view style="margin:0 50rpx 40rpx;">
+  <view class = "item">
+  <view style="width: 20rpx;height: 20rpx;border-radius: 100%;background-color: #7158ec;display: inline-block;"></view>
+  蛋白质：{{pro_p}}%</view>
+  <view class = "item">
+  <view style="width: 20rpx;height: 20rpx;border-radius: 100%;background-color: #1db2f4;display: inline-block;"></view>
+  碳水化合物：{{cho_p}}%</view>
+  <view class = "item">
+  <view style="width: 20rpx;height: 20rpx;border-radius: 100%;background-color: #fec312;display: inline-block;"></view>
+  脂肪：{{fat_p}}%</view>
+  <view class = "item">
+  <view style="width: 20rpx;height: 20rpx;border-radius: 100%;background-color: #ff3444;display: inline-block;"></view>
+  热量：{{kcal}}kcal/{{recKcal}}kcal</view>
+  </view>
+</view>
 <!-- 饼状图 -->
 <!-- <view class="pie-container">
   <image class="empty-img"/>
@@ -69,9 +88,9 @@
   </view>
 </view>
 
-<view class="loading" wx:elif="{{!foodList}}">
+<!-- <view class="loading" wx:elif="{{!foodList}}">
   <m-loading />
-</view>
+</view> -->
 <m-tips warn="Hi，今天还没有记录食物呢" tips="点击右下角的 “+” 开始吧！" wx:else></m-tips>
 <image class="create" src="../../images/home/create-btn.png" bind:tap="JumpToAddFoodPage" />
 </view>

@@ -1,3 +1,2 @@
-<view class="row" wx:for="{{recordList}}" wx:key="index">
-  <view class="title">Name：{{item.name}}</view>
-</view>
+<!--pages/test/test.wxml-->
+<text>pages/test/test.wxml</text>

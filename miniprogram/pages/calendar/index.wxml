@@ -11,18 +11,18 @@
     bind:afterCalendarRender="afterCalendarRender"
   ></calendar>
 </view>
-<view class="{{isCreating ? 'blur-bg' : ''}}">
-<!-- 用户信息 -->
+<view class="{{isCreating ? 'blur-bg' : ''}}"> 
+<!-- 用户信息
 <view class='user-info-container' wx:if="{{!hasCreateUser}}">
   <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFit'></image>
   <view class='info'>
-    <view class='name' wx:if="{{userInfo}}">{{userInfo.nickName}}，</view>
+    <view class='name' wx:if="{{userInfo}}">{{userInfo.nickName}}</view>
     <button class="authorize" open-type="getUserInfo" bindgetuserinfo="onAuthorize" wx:else>
       授权登录
     </button>
     <view class="statistics">你的总累计时间为 {{wholeTime}}</view>
   </view>
-</view>
+</view> -->
 
 <!-- 饼状图 -->
 <!-- <view class="pie-container">
@@ -34,6 +34,31 @@
 <!-- <view style="display: flex; justify-content: center; align-items: center;">
   <canvas-ring id="canvasRing" value="1200"></canvas-ring>
 </view> -->
+<view style="width: 90%;overflow:hidden;margin: 0 auto 20rpx;box-shadow: 0 6rpx 16rpx rgba(63, 50, 7, 0.1);border-radius: 20rpx;"  wx:if="{{foodList.length}}">
+  <view style="background-color:royalblue; height: 80rpx;text-align: center; line-height: 80rpx;color: white;">统计</view>
+  <!-- <view style="justify-content: center;align-items: center;display: flex;">
+    <canvas canvas-id="chart5" style="height:300rpx;display: inline-block;margin:50rpx 0 0;"></canvas>
+  </view> -->
+  <view style="justify-content: center;align-items: center;display: flex;">
+    <canvas canvas-id="chart1" style=" display: inline-block; width:190px;height:190px;"></canvas>
+    <canvas canvas-id="chart2" style="display: inline-block; width:190px;height:190px;"></canvas>
+  </view>
+  <view style="margin:30rpx;">
+  <view class = "item">
+  <view style="width: 20rpx;height: 20rpx;border-radius: 100%;background-color: #7158ec;display: inline-block;"></view>
+  蛋白质：{{pro_p}}%</view>
+  <view class = "item">
+  <view style="width: 20rpx;height: 20rpx;border-radius: 100%;background-color: #1db2f4;display: inline-block;"></view>
+  碳水化合物：{{cho_p}}%</view>
+  <view class = "item">
+  <view style="width: 20rpx;height: 20rpx;border-radius: 100%;background-color: #fec312;display: inline-block;"></view>
+  脂肪：{{fat_p}}%</view>
+  <view class = "item">
+  <view style="width: 20rpx;height: 20rpx;border-radius: 100%;background-color: #ff3444;display: inline-block;"></view>
+  热量：{{kcal}}kcal/{{recKcal}}kcal</view>
+  </view>
+</view>
+
 <!-- 今日添加食物信息 -->
 <view class="project-container"  wx:if="{{foodList.length}}">
   <view>
@@ -83,6 +108,6 @@
 <view class="loading" wx:elif="{{!foodList}}">
   <m-loading />
 </view>
-
+<m-tips warn="Sorry，这一天没有记录食物哦" tips="回到首页开始记录今天的饮食吧！" wx:else></m-tips>
 </view>
 
