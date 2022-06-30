@@ -17,6 +17,7 @@ Page({
       success: res => {
         var jsonStr = res.rawData .replace(" ", "")
         if (typeof jsonStr != 'object') {
+          
         jsonStr = jsonStr.replace(/\ufeff/g, "");
         var jj = JSON.parse(jsonStr);
         console.log(jj)

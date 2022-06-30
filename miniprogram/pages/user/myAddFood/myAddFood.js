@@ -1,4 +1,5 @@
 import { showToast} from '../../../utils/UIUtil'
+const globalEnv = getApp()
 Page({
 
   data: {
@@ -16,6 +17,7 @@ onShow: function () {
 },
 
 getFoodList(){
+  this.data.userId = globalEnv.data.userId
   wx.cloud.callFunction({
     name: 'getCustomFoodList',
     data: {

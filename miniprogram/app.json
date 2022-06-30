@@ -1,15 +1,15 @@
 {
 
   "pages": [
-    "pages/calendar/index",
+
     "pages/home/index",
     "pages/test/test",
     
     "pages/user/index",
     
-    
+    "pages/calendar/index",
     "pages/user/advice/index", 
-   
+    
    
     "pages/home/addFood/addFood",
     

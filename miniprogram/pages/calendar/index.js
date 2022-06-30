@@ -401,6 +401,7 @@ const conf = {
                   pro_p:(this.data.pro/this.data.sum*100).toFixed(2),
                   cho_p:(this.data.cho/this.data.sum*100).toFixed(2),
                   fat_p:(this.data.fat/this.data.sum*100).toFixed(2),
+                  //kcal:this.data.kcal.toFixed(2)
                 })
                 console.log("--sum is:" + this.data.sum + "\npro is:" + this.data.pro + "\ncho:" + this.data.cho + "\nfat: " +  this.data.fat )
                 console.log(this.data.kcal)
@@ -412,7 +413,9 @@ const conf = {
            }
           })
          }
-
+         this.setData({
+           kcal:Math.floor(this.data.kcal * 100) / 100
+         })
          console.log(this.data.foodList)
 
          this.setChart()

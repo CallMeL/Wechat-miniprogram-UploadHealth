@@ -17,6 +17,7 @@ exports.main = async (event, context) => {
       .where({
         userId:ID
       })
+      
       .get()
   } catch (e) {
     console.log(e)
